@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 //create an element-simillar to document.createElement
 /**
  * React.createElement(object) =>HTML (browser understands)
@@ -8,7 +11,7 @@
  * param 3 - children inside props: text of the element
  */
 const h1 = React.createElement("h1",{xyz:'abc',id:'heading'},"hello World from React!");
-const h2 = React.createElement("h2",{xyz:'abc',id:'heading2'},"This is a h2 element");
+const h2 = React.createElement("h2",{xyz:'abc',id:'heading2'},"This is Namaste React ");
 
 // Create nested Child using React.
 
