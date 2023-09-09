@@ -90,11 +90,11 @@
 
   ### Concepts Learned (02 Igniting our App)
 
-  1. **Can React build a production ready app without using any package/library**
+  1. **Can React build a production ready app without using any package/library**  
   Ans- No, A lot of other Packages are required.
-  2. **What is NPM**
+  2. **What is NPM**  
   Ans- NPM is evrything but Node package Manager. It manages Packages and is a repository containing all the packages. It works as a package manager behind the scene but it's full form is not Node Package Manager.
-  3. **How can you make your project use NPM**
+  3. **How can you make your project use NPM**  
   A- We can make our project use npm using `npm init`.
       <details>
         <summary>Example</summary>
@@ -146,12 +146,12 @@
 
       </details>
 
-  4. **How to add a package /dependencies into your project**
+  4. **How to add a package /dependencies into your project**  
   Ans- By using the command `npm install <package_name>`.
   For ex: `npm install -D Parcel`. Then it will create a node dependencies/devDepenedencies inside your Package.json.
-  5. **What is a Bundler**
+  5. **What is a Bundler**  
   Ans-A bundler is the most important package in our project while doing development. There are multiple bundlers like parcel,vite,webpack etc. Our whole needs to be bundled,minified,cleaned,compressed, packages 7 a lot fo other stuffs before it can be sent prod. Bundler does all these jobs.
-  6. **What is Parcel**
+  6. **What is Parcel**  
   Ans- parcel is a bundler. it is easy to configure.
       * `npm install -D parcel`.
     It also does a lot of other functions like:
@@ -171,19 +171,19 @@
       * Error handling
       * HTTPS
       * Tree shaking - remove unused nodes
-  7. **What is -D in `npm install -D Parcel`**
+  7. **What is -D in `npm install -D Parcel`**  
   Ans- That means we are installing parcel package/library as a dev dependency.There are two types of dependencies.
       * dependencies - required for project and is required in production.
       * devDependencies - required during development.
-  8. **What is the package.json file**
+  8. **What is the package.json file**  
   Ans- Package.json will be created right after npm init command and it keeps tracks of the dependencies installed.
-  9. **What is tilde(`) and carret(^)**
+  9. **What is tilde(`) and carret(^)**  
   Ans- They represent auto upgradable to Major and Minor versions respectively.
-  10. **What is the package-lock.json file that got created automatically**
+  10. **What is the package-lock.json file that got created automatically**  
   Ans- Package-lock.json has exact version of all the dependencies and their dependencies mentioned in detail. It keeps track of all the details of the dependencies and transitive dependencies used in the project.
-  11. **Do we Need to Put node_modules folder into git**
+  11. **Do we Need to Put node_modules folder into git**  
   Ans- Don't put the files and folders that you can regenerate again into git. It is unnecessary.
-  12. **How to Ignite your app**
+  12. **How to Ignite your app**  
   Ans- Since we have already installed parcel, we can ignite our app using the command `npx parcel index.html`.
       <details>
         <summary> Ignite your app</summary>
@@ -200,7 +200,7 @@
         ```
 
       </details>
-  13. **How to get react and react-dom using npm instad of cdn**
+  13. **How to get react and react-dom using npm instad of cdn**  
   Ans- using CDN is not a good way and is a costliest operation as it makes a network call. we can install these dependensies as packages using `npm install <package_name>` command
   Ex: `npm install react and npm install react-dom`
   14. **Will it work if we remove the CDN?**
@@ -210,7 +210,7 @@
           import ReactDOM from "react-dom/client";
         ```
 
-  15. **Will it work afer that?**
+  15. **Will it work afer that?**  
   Ans- No It will give you error. `@parcel/transformer-js: Browser scripts cannot have imports or exports.`. Basically you have to Add the **type="module"** attribute to the `<script>` tag inside index.html. It is because by default it is treated as a normal javascript file and to use it as a module and import any other module to this Js file, we have to explicitly tell that this is a js file of module type. And then it would work.
 
 </details>
@@ -398,3 +398,162 @@
             </details>
 
 </details>
+
+## 04 Talk is cheap, show me the code
+
+This is an project based learning where we will build a food ordering app having following components.
+
+  * Header
+    - Logo
+    - Nav items
+  * Body
+    - Search bar and button
+    - Card container (repeatable)
+        - Img
+        - Restaurant name, Star rating, cuisines, delivery time
+  * Footer
+    - Copyright
+    - Links
+    - Address
+    - Contact us
+
+<details>
+  <summary>Summary</summary>
+
+  ### Concepts Learned (04 Talk is cheap, show me the code)
+
+  1. **How can you write css in react?** 
+      - By using attribute className instead of class.  
+        -   <details>
+              <summary>Example</summary>
+
+              ```javascript
+              const AppLayout = () =>{
+                  return (
+                      <div className="app">
+                          <Header/>
+                          <Body/>
+                      </div>
+                  )
+              }
+              ```
+
+              ```css
+              .app{
+                  display: flex;
+                  justify-content: space-between;
+                  border: 1px solid black;
+              }
+              ```
+            
+            </details> 
+
+      - By using inline css.  
+        -   <details>
+              <summary>Example</summary>
+
+              ```javascript
+              const styleCard = {
+                  background: 'lightgrey',
+                  textAlign:'center'
+              }
+
+              const Restaurant = () => {
+                  return(
+                      <div className="res-card" style={styleCard}>
+                          <h3>Meghna Foods</h3>
+                      </div>
+                  )
+              }
+              ```
+
+              OR  
+
+              ```javascript
+              const styleCard = {
+                  background: 'lightgrey',
+                  textAlign:'center'
+              }
+
+              const Restaurant = () => {
+                  return(
+                      <div className="res-card" style={{ background: 'lightgrey', textAlign:'center' }}>
+                          <h3>Meghna Foods</h3>
+                      </div>
+                  )
+              }
+              ```
+
+            </details> 
+          
+  2. **What is props in react?**  
+  Ans- By using props we can pass properties from parent comp/arguements to a function.  
+      -   <details>
+            <summary>Example(we are passing name,cuisine as props)</summary>
+            
+            ```javascript
+            const Body = () => {
+              return(
+                  <div className="body">
+                      <div className="search">
+                          Search            
+                      </div>
+
+                      <div className="res-container">
+                          <Restaurant name="Jubilee Foods" cuisine="South Indian"/>
+                          <Restaurant name="KFC" cuisine="American"/>
+                          <Restaurant/>
+                          <Restaurant/>
+                      </div>
+                  </div>
+              )
+            }
+            const styleCard = {
+                background: 'lightgrey',
+                textAlign:'center'
+            }
+
+            const Restaurant = ({name,cuisine}) => {
+                return(
+                    <div className="res-card" style={styleCard}>
+                        <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/fq1uss75jajmt1oueyla"></img>
+                        <h3>{name || 'Meghna Foods'}</h3>
+                        <h4>{cuisine || 'North Indian'}</h4>
+                        <h4>4.4</h4>
+                        <h4>38 mins</h4>
+                    </div>
+                )
+            }
+            ```
+          </details>
+  
+  3. **What is  config driven UI?**  
+  It means the UI is driven by a config. Which means based on configuration user will be shown/get personalized data
+  Ex: Swiggy API `https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.3625249&lng=85.83262599999999&`
+
+  4. **How would you loop over an array and render multiple cards?**  
+    -   Ex:  
+        ```javascript
+        const Body = () => {
+            return(
+                <div className="body">
+                    <div className="search">
+                        Search
+                    </div>
+
+                    <div className="res-container">
+                    {
+                        card?.gridElements?.infoWithStyle?.restaurants?.map(el=>
+                            <Restaurant key={el.info.id} resData={el}/>
+                        )
+                    }
+                    </div>
+                </div>
+            )
+        }
+        ```
+
+</details>
+
+  
+  
