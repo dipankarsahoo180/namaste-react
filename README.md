@@ -550,8 +550,8 @@ Ex: Swiggy API `https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.3625249&l
         )
     }
     ```
-5. **Give an example how you can use fetch API** 
-First Install this chrome extension from here `https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino`
+5. **Give an example how you can use fetch API**  
+First Install this chrome extension from here `https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino`.  
 and then run the following code to understand
 
     ```javascript
