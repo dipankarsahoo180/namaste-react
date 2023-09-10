@@ -596,7 +596,42 @@ and then run the following code to understand
     
 </details>
 
+## 05 Lets get hooked
 
+<details>
+<summary>Summary</summary>
+
+### Concepts Learned (05 Lets get hooked)
+
+1. **What are the different types of import we use in Javascript?**  
+Two types of Export/Import.  
+    -   Default Export/Import
+        ```javascript
+        export default Component;  
+        import Component from "path";
+        ```
+
+    -   Named Export/Import
+        ```javascript
+        export const Component;  
+        import {Component} from "path";
+        ```
+
+1. **What are hooks in React?**  
+Hooks are like normal js functions but provided by react.  
+for ex: `useState()` and `useEffect()`
+
+1. **What is useState() hook**  
+useState is a React Hook that lets you add a state variable to your component.  
+
+    ```javascript
+    const [state, setState] = useState(initialState);
+    ```
+1. **What is reconciliation?**  
+It is an alogorithm came in react 16 by react fiber, which uses an algorithm to selectively update some particular nodes/elements inside html instead of whole html by comapring the DOM nodes.  
+Actual DOM: These are the real tags.  
+Virtual DOM: representation of actual DOM. It is basically the object (reactElement). You can console log <Body/> and/or <Head/> and you can see an object is printed.
+</details>
 
 
 
