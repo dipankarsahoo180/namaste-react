@@ -1,6 +1,8 @@
+import { useState } from "react";
 import logo from "../assets/logo.png"
 
 const Header = () => {
+    const [jsxButton,setJsxButton] = useState('Login')
     return (
         <>
             <div className="header">
@@ -14,6 +16,13 @@ const Header = () => {
                         <li>About us</li>
                         <li>Contact us</li>
                         <li>Cart</li>
+                        {(jsxButton == 'Login')?
+                        <li><button className="log-in-out-btn" onClick={()=>setJsxButton('Logout')}>Login</button></li>
+                        :
+                        <li><button className="log-in-out-btn" onClick={()=>setJsxButton('Login')}>Logout</button></li>
+                        }
+                        
+                        
                     </ul>
                 </div>
             </div>

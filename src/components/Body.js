@@ -1,56 +1,54 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { SWIGGY_URL } from "../utils/Constants";
+import Shimmer from "./Shimmer";
+import Search from "./Search";
 
 const Body = () => {
 
-    const [card,setCard] = useState([]);
-    const [filteredCard,setFilteredCard] = useState([]);
-    const  fetchData = async() => {
+    const [listOfRestaurants, setListOfRestaurants] = useState([]);
+    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    const fetchData = async () => {
         try {
-          const response = await fetch(SWIGGY_URL);
-          const data = await response.json();
-          const card = data.data.cards.find(el => el.card.card.id === 'top_brands_for_you').card.card;
-          setCard(card?.gridElements?.infoWithStyle?.restaurants);
-          setFilteredCard(card?.gridElements?.infoWithStyle?.restaurants);
+            const response = await fetch(SWIGGY_URL);
+            const data = await response.json();
+            const card = data.data.cards.find(el => el.card.card.id === 'restaurant_grid_listing').card.card;
+            setListOfRestaurants(card?.gridElements?.infoWithStyle?.restaurants);
+            setFilteredRestaurants(card?.gridElements?.infoWithStyle?.restaurants);
+            console.warn(card?.gridElements?.infoWithStyle?.restaurants);
         } catch (error) {
-          console.error('Fetch error:', error);
-          //throw error;
+            console.error('Fetch error:', error);
+            //throw error;
         }
-      
+
     }
 
     useEffect(() => {
-        fetchData();
-      }, []);
+        fetchData()
+    }, []);
 
-    
-    return(
-        <div className="body">
-            <div className="search">
-                <button className='top-rated-btn' onClick={
-                    ()=>{
-                        const filteredCard = card.filter(el=>el.info.avgRating > 4);
-                        setFilteredCard(filteredCard);
+    return (listOfRestaurants.length === 0) ?
+        <Shimmer /> :
+
+        (
+            <div className="body">
+                <Search 
+                    listOfRestaurants = {listOfRestaurants} 
+                    setFilteredRestaurants={setFilteredRestaurants}
+                    searchText = {searchText}
+                    setSearchText ={setSearchText}
+                />
+                
+                <div className="res-container">
+                    {
+                        filteredRestaurants?.map(el =>
+                            <RestaurantCard key={el.info.id} resData={el} />
+                        )
                     }
-                }> Filter Top Rated restaurants</button>
-
-                <button className='reset-btn' onClick={
-                    ()=>{
-                        setFilteredCard(card);
-                    }
-                }> Reset </button>
+                </div>
             </div>
-
-            <div className="res-container">
-            {
-                filteredCard?.map(el=>
-                    <RestaurantCard key={el.info.id} resData={el}/>
-                )
-            }
-            </div>
-        </div>
-    )
+        )
 }
 
-export  {Body};
+export { Body };
