@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import SwiggyHeader from "./components/Header";
+import Header from "./components/Header";
 import { Body } from "./components/Body";
 
 
 const AppLayout = () =>{
     return (
         <div className="app">
-            <SwiggyHeader/>
+            <Header/>
             <Body/>
         </div>
     )

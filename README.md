@@ -633,11 +633,97 @@ Actual DOM: These are the real tags.
 Virtual DOM: representation of actual DOM. It is basically the object (reactElement). You can console log <Body/> and/or <Head/> and you can see an object is printed.
 </details>
 
+## 06 Exploring the World
 
+<details>
+<summary>Summary</summary>
 
+### Concepts Learned (06 Exploring the World)
 
+1. **What is monolithic and microservices architecture**  
+A monolithic application is built as a single unified unit while a microservices architecture is a collection of smaller, independently deployable services. <a href="https://www.atlassian.com/microservices/microservices-architecture/microservices-vs-monolith">refer here</a>
 
+2. **How `useEffect()` is called**  
+First the component will be rendered as HTML and  
+then it will call `useEffect()` and  
+then it will run the code inside the callback of useEffect
 
+3. **Can we write multiple `useEffect()` inside a single component**  
+Yes.
+    ```Javascript
+    useEffect(() => {
+        console.warn('use effect 1');
+    }, []);
+    useEffect(() => {
+        fetchData();
+        console.warn('use effect 2');
+    }, []);
+    useEffect(() => {
+        console.warn('use effect 3');
+    }, []);
+    ```
+4. **What is Shimmer**  
+We load a fake screen instead of blank untill we get the data from server/api in realtime to improve UX. We acheive this using conditional rendering.
+
+    ```javascript
+    const Body = () => {
+
+        const [listOfRestaurants, setListOfRestaurants] = useState([]);
+        const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+        const fetchData = async () => {
+            try {
+                const response = await fetch(SWIGGY_URL);
+                const data = await response.json();
+                const card = data.data.cards.find(el => el.card.card.id === 'top_brands_for_you').card.card;
+                setListOfRestaurants(card?.gridElements?.infoWithStyle?.restaurants);
+                setFilteredCard(card?.gridElements?.infoWithStyle?.restaurants);
+            } catch (error) {
+                console.error('Fetch error:', error);
+                //throw error;
+            }
+
+        }
+
+        useEffect(() => {
+            fetchData();
+        }, []);
+        //conditioinal rendering
+        return (listOfRestaurants.length === 0) ?
+        <Shimmer /> :
+
+        (
+            <div className="filter">
+                <div className="search">
+                    <input className='search-text' type="text" onChange={(e) => {
+                        if(!e.target?.value) {
+                            setFilteredRestaurants(listOfRestaurants);
+                            return;
+                        }else{
+                            const filteredCard = listOfRestaurants.filter(el => (el.info.name.toUpperCase()).includes(e.target?.value?.toUpperCase()));
+                            setFilteredRestaurants(filteredCard);
+                        }
+                    }}>
+
+                    </input>
+                </div>
+                <button className='top-rated-btn' onClick={
+                    () => {
+                        const filteredCard = listOfRestaurants.filter(el => el.info.avgRating > 4);
+                        setFilteredRestaurants(filteredCard);
+                    }
+                }> Filter Top Rated restaurants</button>
+
+                <button className='reset-btn' onClick={
+                    () => {
+                        setFilteredRestaurants(listOfRestaurants);
+                    }
+                }> Reset </button>
+            </div>
+        )
+    }
+    ```
+    
+</details>
 
 
 

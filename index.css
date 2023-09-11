@@ -44,13 +44,20 @@
     height: 225px;
 }
 
-.search{
+.filter{
     padding: 10px 0px;
+    display: flex;
 }
 
-.top-rated-btn, .reset-btn{
+.top-rated-btn, .reset-btn, .log-in-out-btn, .search-btn{
     background-color: #0a4f99f7;
     color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.search-text{
     padding: 5px;
     border-radius: 5px;
     margin-right: 10px;
