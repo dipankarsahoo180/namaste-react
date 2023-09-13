@@ -1,5 +1,23 @@
 # namaste-react :rocket: 
 
+
+This is an project based learning where we will build a food ordering app having following components.
+
+  * Header
+    - Logo
+    - Nav items
+  * Body
+    - Search bar and button
+    - Card container (repeatable)
+        - Img
+        - Restaurant name, Star rating, cuisines, delivery time
+  * Footer
+    - Copyright
+    - Links
+    - Address
+    - Contact us
+
+
 ## 01 Inception
 
 <details>
@@ -399,22 +417,6 @@ By wrapping the code inside `{}`
 
 ## 04 Talk is cheap, show me the code
 
-This is an project based learning where we will build a food ordering app having following components.
-
-  * Header
-    - Logo
-    - Nav items
-  * Body
-    - Search bar and button
-    - Card container (repeatable)
-        - Img
-        - Restaurant name, Star rating, cuisines, delivery time
-  * Footer
-    - Copyright
-    - Links
-    - Address
-    - Contact us
-
 <details>
 <summary>Summary</summary>
 
@@ -728,7 +730,214 @@ We load a fake screen instead of blank untill we get the data from server/api in
 
 
 
+## 07 Finding the path
+<details>
+<summary>Summary</summary>
+
+### Concepts Learned (07 Finding the path)
+
+1. **How to use routing in react?**  
+we can use react-router-dom package to create routes in react.  
+    ```javascript
+    import React from "react";
+    import ReactDOM from "react-dom/client";
+    import Header from "./components/Header";
+    import { Body } from "./components/Body";
+    import { createBrowserRouter,RouterProvider } from "react-router-dom";
+    import About from "./components/About";
 
 
+    const AppLayout = () =>{
+        return (
+            <div className="app">
+                <Header/>
+                <Body/>
+            </div>
+        )
+    }
 
-  
+
+    const appRouter = createBrowserRouter(
+        [
+            {
+                path:"/",
+                element : <AppLayout/>,
+            },
+            {
+                path:"/about",
+                element : <About/>
+            },
+            
+        ]
+    );
+
+    //ReactDOM is for dom interaction, Make #root as the root element of react
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    //use RouterProvider for Routing
+    root.render(<RouterProvider router={appRouter} />);
+    ```
+
+2. **How to routing but keeping Header and Footer constant in react?**
+We can use `</Outlet>` and `children` property inside router object as a combination to do that
+    ```javascript
+    import React from "react";
+    import ReactDOM from "react-dom/client";
+    import Header from "./components/Header";
+    import { Body } from "./components/Body";
+    import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+    import About from "./components/About";
+    import ContactUs from "./components/ContactUs";
+    import Cart from "./components/Cart";
+
+    const AppLayout = () => {
+        return (
+            <div className="app">
+                <Header />
+                <Outlet />
+            </div>
+        )
+    }
+
+
+    const appRouter = createBrowserRouter(
+        [
+            {
+                path: "/",
+                element: <AppLayout />,
+                children: [
+
+                    {
+                        path: "",
+                        element: <Body />
+                    }, 
+                    {
+                        path: "about",
+                        element: <About />
+                    }, 
+                    {
+                        path: "contact-us",
+                        element: <ContactUs />
+                    }, 
+                    {
+                        path: "cart",
+                        element: <Cart />
+                    }
+                ]
+            }
+
+        ]
+    );
+
+    //ReactDOM is for dom interaction, Make #root as the root element of react
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    //render the element inside root
+    root.render(<RouterProvider router={appRouter} />);
+    ```
+
+2. **How can you build links so that user can click on them and redirected to certain routes in react?**  
+We can use `<Link to=''>Label</Link>` from react-router-dom to acheive this.  
+    ```javascript
+
+    import { useState } from "react";
+    import logo from "../assets/logo.png"
+    import { Link } from "react-router-dom";
+
+    const Header = () => {
+        const [jsxButton,setJsxButton] = useState('Login')
+        return (
+            <>
+                <div className="header">
+                    <Link to='/'>
+                        <div className="logo">
+                        <img src={logo}></img>
+                        </div>
+                    </Link>
+                    
+                    <div className="nav-items">
+                        <ul>
+                            <li><Link to='/'>Home</Link></li>
+                            <li><Link to='about'>About us</Link></li>
+                            <li><Link to='contact-us'>Contact us</Link></li>
+                            <li><Link to='cart'>Cart</Link></li>
+                        </ul>
+                    </div>
+                </div>
+            </>
+        )
+    }
+
+    export default Header;
+    ```
+
+3. **How can you create your own error page in react?**  
+By adding `errorElement: <componentName/>` property inside the router object.
+    ```javascript
+    const appRouter = createBrowserRouter(
+        [
+            {
+                path: "/",
+                element: <AppLayout />,
+                errorElement: <Error/>,
+                children: [
+                    {
+                        path: "",
+                        element: <Body />
+                    }, 
+                    {
+                        path: "about",
+                        element: <About />
+                    }, 
+                    {
+                        path: "contact-us",
+                        element: <ContactUs />
+                    }, 
+                    {
+                        path: "cart",
+                        element: <Cart />
+                    }
+                ]
+            }
+
+        ]
+    );
+    ```
+
+4. **How can you get error details and show them in error page in react?**  
+By using `useRouteError` from `react-router-dom`.  
+
+
+    ```javascript
+    import Header from "./Header"
+    import {useRouteError} from 'react-router-dom'; 
+
+    const Error = () => {
+        const error = useRouteError()
+        return (
+            <>
+                <Header></Header>
+                <h1>Opps!! {error.status} {error.statusText}</h1>
+                <h1>{error?.error?.message}</h1>
+            </>
+        )
+    }
+    export default Error;
+    ```
+
+4. **How can use dynamic routing in react?**  
+    * Step 1: Create an element and use useParams() to get the dynaic parameter from url. `const {resId} = useParams();` .
+    * Step 2: pass the queryparam as   resId from Link tag
+        ```javascript
+        <Link to={'restaurant/'+el.info.id}>
+            <RestaurantCard resData={el} />
+        </Link>
+        ```
+    * Step 3: Configure the dyanmic routing in router object as well  
+        ```javascript
+        {
+            path: "restaurant/:resId",
+            element: <RestaurantMenu />
+        }
+    
+        ```
+
+</details>
