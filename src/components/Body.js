@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import { SWIGGY_URL } from "../utils/Constants";
 import Shimmer from "./Shimmer";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -43,7 +44,9 @@ const Body = () => {
                 <div className="res-container">
                     {
                         filteredRestaurants?.map(el =>
-                            <RestaurantCard key={el.info.id} resData={el} />
+                            <Link className="link-class" to={'restaurant/'+el.info.id} key={el.info.id}>
+                                <RestaurantCard resData={el} />
+                            </Link>
                         )
                     }
                 </div>
