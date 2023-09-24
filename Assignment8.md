@@ -63,23 +63,6 @@
    **Answer:**
      - The callback function passed to `useEffect` cannot be `async` because `useEffect` doesn't expect a promise to be returned. It expects either nothing or a cleanup function. Using `async` in the callback can lead to unexpected behavior and errors.
 
-## Coding
-
-1. **Create a Class Based Component**  
-   **Answer:**
-     - Create a class-based component by defining a class that extends `React.Component`.
-     - Create two class-based child components.
-     - Pass props from the parent component to the child components.
-     - Create a constructor to initialize the component's state.
-     - Use `this.setState` to update the state variables.
-     - If there are multiple state variables, you can update them independently.
-     - Use `console.log` to observe the order of execution of lifecycle methods.
-
-2. **Create an interval inside `componentDidMount`?**  
-   **Answer:**
-     - You can create an interval inside the `componentDidMount` method to perform actions at regular intervals. After evry interval it will call `render` method, followed by `componentDidUpdate` method.
-     - Don't forget to clear the interval using `clearInterval` to avoid memory leaks.
-
 ## Reference
 
 - React Life Cycle Method Diagram: [https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
