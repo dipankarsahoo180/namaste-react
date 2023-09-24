@@ -15,9 +15,14 @@ export default function RestaurantMenu() {
         const data = await response.json();
         setRestaurantDetails(data.data);
         console.log(data.data);
-        const card = data.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards ?
-            data.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards :
-            data.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards
+        const card = data.data?.cards[3]?.groupedCard? 
+                        data.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards ?
+                            data.data.cards[3]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card.card.itemCards :
+                            data.data.cards[3]?.groupedCard?.cardGroupMap?.REGULAR.cards[2]?.card.card.itemCards 
+                        :
+                        data.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards ?
+                            data.data.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card.card.itemCards :
+                            data.data.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards[2]?.card.card.itemCards 
         setItemList(card)
         console.log(card);
     }

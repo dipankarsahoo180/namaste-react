@@ -941,3 +941,372 @@ By using `useRouteError` from `react-router-dom`.
         ```
 
 </details>
+
+
+## 08 Let's get Classy
+<details>
+<summary>Summary</summary>
+
+### Concepts Learned (08 Let's get Classy)
+
+1. **What are class based components?**  
+This is an older way of writing code in react. Ex:  
+    ```javascript
+    import React from "react";
+
+    export default class UserClass extends React.Component {
+    
+    render() {
+        return (
+        <>
+            <h1>Name: Dipankar</h1>
+            <h1>Location: Bangalore</h1>
+            <h1>Contact: +9098909890</h1>
+        </>
+        );
+    }
+    }
+    ```
+
+1. **How to access props in class based component?**  
+By using `constructor(props)`. Ex:  
+    ```javascript
+    import React from "react";
+
+    export default class UserClass extends React.Component {
+        constructor(props) {
+            super(props); // We always have to write this
+            //console.log(props);
+            this.name = props.name;
+            //OR
+            //this.name = this.props.name
+        }
+        /** This will also work
+        render() {
+            return (
+                <>
+                    <h1>Name: {this.name}</h1>
+                    <h1>Location: {this.props.location}</h1>
+                    <h1>Contact: +9098909890</h1>
+                </>
+            );
+        }
+        */
+        render() {
+        const {name,location} = this.props;
+        return (
+            <>
+                <h1>Name: {name}</h1>
+                <h1>Location: {location}</h1>
+                <h1>Contact: +9098909890</h1>
+            </>
+        );
+    }
+    }
+    ```
+    And pass the props from parent like below:
+    ```javascript
+    import React from "react";
+    import UserClass from "./UserClass";
+
+    const About = () => {
+        return (
+            <>
+                <h1>About</h1>
+                <div className="about-card">
+                    <div>
+                        <UserClass name="Dipankar (Class Based)" location="Bangalore(Class)" />
+                    </div>
+                </div>
+            </>
+        );
+    };
+
+    export default About;
+    ```
+
+1. **How to create and update state variable in class?**  
+States were created whenever a new instance of class is created in class based components in react.
+Constructor is a best place to create state variables unsing `this.state`.  
+We can not update the state variables directly like `this.state.count =12;Instead we use 
+    ```javascript
+    this.setstate({
+        stateName:'stateValue'
+    })
+    ```
+    Example:
+
+    ```javascript
+    import React from "react";
+
+    export default class UserClass extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                count: 0,
+                result: "Pass",
+            };
+        }
+
+        render() {
+            const updateCount = () => {
+                this.setState({
+                    count: ++this.state.count,
+                    result: "Failed",
+                });
+            };
+            const { name, location } = this.props;
+            return (
+                <>
+                    <h1>Name: {name}</h1>
+                    <h1>Location: {location}</h1>
+                    <h1>Contact: +9098909890</h1>
+                    <h1>Count: {this.state.count}</h1>
+                    <h1>Result: {this.state.result}</h1>
+                    <button className="global-btn" onClick={() => updateCount()}>
+                        Update State Variable
+                    </button>
+                </>
+            );
+        }
+    }
+    ```
+
+1. **Explain lifecycle of react class based components**  
+    Constuctor() ==> Render() ==>(Parent followe by child) 
+    Child component didMoount ==>Parent Component didMount;
+
+    Parent constructor
+    About.js:18 Parent render start
+    About.js:33 inside parend render
+
+    UserClass.js:10 Child constructor
+    UserClass.js:24 Child render Start
+    UserClass.js:35 Inside child render
+
+    ChildClassA.js:6 ChildClassA constructor
+    ChildClassA.js:13 ChildClassA render Start
+    ChildClassA.js:17 Inside ChildClassA render
+
+    ChildClassB.js:6 ChildClassB constructor
+    ChildClassB.js:13 ChildClassB render Start
+    ChildClassB.js:17 Inside ChildClassB render
+
+    UserClass.js:13 Child component Did Mount
+
+    ChildClassA.js:9 ChildClassA component Did Mount
+
+    ChildClassB.js:9 ChildClassB component Did Mount
+
+    About.js:13 Parent component Did Mount<br/><br/>
+
+    Example Parent Component:
+    ```javascript
+    import React from "react";
+    import User from "./User";
+    import UserClass from "./UserClass";
+    import ChildClassA from "./ChildClassA";
+    import ChildClassB from "./ChildClassB";
+    class About extends React.Component {
+        constructor(props) {
+            super(props);
+            console.log("Parent constructor");
+        }
+
+        componentDidMount() {
+            console.log("Parent component Did Mount");
+        }
+
+        render() {
+            console.log("Parent render start");
+            return (
+                <>
+                    <h1>About</h1>
+                    <div className="about-card">
+                        <div>
+                            <UserClass
+                                name="Dipankar (Class Based)"
+                                location="Bangalore(Class)"
+                            />
+                        </div>
+                    </div>
+                    {console.log("inside parend render")}
+                    <ChildClassA />
+                    <ChildClassB />
+                </>
+            );
+        }
+    }
+
+    export default About;
+    ```
+    Child Component Example:
+    ```javascript
+    import React from "react";
+
+    export default class UserClass extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                count: 0,
+                result: "Pass",
+            };
+            console.log('Child constructor');
+        }
+        componentDidMount(){
+            console.log('Child component Did Mount')
+        }
+
+        render() {
+            const updateCount = () => {
+                this.setState({
+                    count: ++this.state.count,
+                    result: "Failed",
+                });
+            };
+            const { name, location } = this.props;
+            console.log('Child render Start');
+            return (
+                <>
+                    <h1>Name: {name}</h1>
+                    <h1>Location: {location}</h1>
+                    <h1>Contact: +9098909890</h1>
+                    <h1>Count: {this.state.count}</h1>
+                    <h1>Result: {this.state.result}</h1>
+                    <button className="global-btn" onClick={() => updateCount()}>
+                        Update State Variable
+                    </button>
+                    {console.log('Inside child render')}
+                </>
+            );
+        }
+    }
+    ```
+
+1. **What is the use of `componentDidMount()` lifecycle hook**  
+componentDidMount method runs after the component is rendered in the browser and then if we want to make any heavy processings we can do inside this method. For example: making an api call.
+
+1. **What is the use of `componentDidUpdate()` lifecycle hook** 
+This is a lifecycle hook called after each re-render of the component. It does not called for the first render.
+
+1. **What is the use of `componentWillUnmount()` lifecycle hook** 
+This is a lifecycle hook called Just before unmounting of the component. First parent component will unmount and then child component
+Example:
+Parent component:
+    ```javascript
+    import React from "react";
+    import User from "./User";
+    import UserClass from "./UserClass";
+    import ChildClassA from "./ChildClassA";
+    import ChildClassB from "./ChildClassB";
+    class About extends React.Component {
+        constructor(props) {
+            super(props);
+            console.log("Parent constructor");
+        }
+
+        componentDidMount() {
+            console.log("Parent component Did Mount");
+        }
+
+        componentDidUpdate() {
+            console.log("Parent component Did Update");
+        }
+
+        componentWillUnmount() {
+            console.log("Parent component Will Unmount");
+        }
+
+        render() {
+            console.log("Parent render start");
+            return (
+                <>
+                    <h1>About</h1>
+                    <div className="about-card">
+                            <UserClass
+                                name="Dipankar (Class Based)"
+                                location="Bangalore(Class)"
+                            />
+                            <UserClass
+                                name="Lizu (Class Based)"
+                                location="Bhubaneswar(Class)"
+                            />
+                    </div>
+                    {console.log("inside parend render")}
+                    <ChildClassA />
+                    <ChildClassB />
+                </>
+            );
+        }
+    }
+
+    export default About;
+    ```
+    Child Component:
+    ```javascript
+    import React from "react";
+
+    export default class UserClass extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                count: 0,
+                result: "Pass",
+            };
+            console.log(this.props.name+" Child constructor");
+        }
+
+        async componentDidMount() {
+            console.log(this.props.name+" Child component Did Mount");
+            const jsonData = await fetch('https://api.github.com/users/dipankarsahoo180')
+                                        .then(data=>data.json());
+            console.warn(jsonData);
+            this.setState(
+                {
+                    name: jsonData.name,
+                    location: jsonData.location,
+                    avatar_url:jsonData.avatar_url
+                }
+            )
+        }
+
+        componentDidUpdate(){
+            console.log(this.props.name+" Child component Did Update");
+        }
+
+        componentWillUnmount() {
+            console.log(this.props.name+" Child component Will Unmount");
+        }
+
+        render() {
+            const updateCount = () => {
+                this.setState({
+                    count: ++this.state.count,
+                    result: "Failed",
+                });
+            };
+            const { name, location,avatar_url,count,result } = this.state;
+            console.log(this.props.name+" Child render Start");
+            return (
+                <div className="user-card">
+                    <img src={avatar_url} 
+                    alt="Image no available"
+                    height="200px" width="200px"
+                    ></img>
+                    <p>Name: {name}</p>
+                    <p>Location: {location}</p>
+                    <p>count: {count}</p>
+                    <p>result: {result}</p>
+                    <button className="global-btn" onClick={() => updateCount()}>
+                        Update State Variable
+                    </button>
+                    {console.log(this.props.name+" Inside child render")}
+                </div>
+            );
+        }
+    }
+
+    ```
+
+
+</details>
