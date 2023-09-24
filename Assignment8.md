@@ -65,7 +65,7 @@
 
 ## Coding
 
-1. **Create a Class Based Component**
+1. **Create a Class Based Component**  
    **Answer:**
      - Create a class-based component by defining a class that extends `React.Component`.
      - Create two class-based child components.
@@ -75,7 +75,7 @@
      - If there are multiple state variables, you can update them independently.
      - Use `console.log` to observe the order of execution of lifecycle methods.
 
-2. **Create an interval inside `componentDidMount`?**
+2. **Create an interval inside `componentDidMount`?**  
    **Answer:**
      - You can create an interval inside the `componentDidMount` method to perform actions at regular intervals. After evry interval it will call `render` method, followed by `componentDidUpdate` method.
      - Don't forget to clear the interval using `clearInterval` to avoid memory leaks.
