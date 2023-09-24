@@ -1318,5 +1318,28 @@ Parent component:
 
     ```
 
+1. **Explain how you can clear interval inside function based react component (inside useEffects).**
+We can make use of the callback method returned by `useEffects()`
+Example:
+    ```javascript
+    import React from "react";
+    import { useEffect } from "react";
+
+    const ContactUs = () => {
+        useEffect(() => {
+            const interval = setInterval(() => {
+                console.log("set interval called");
+            }, 1000);
+
+            return () => {
+                clearInterval(interval);
+            };
+        });
+
+        return <h1>ContactUs</h1>;
+    };
+
+    export default ContactUs;
+    ```
 
 </details>

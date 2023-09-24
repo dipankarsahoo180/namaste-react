@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import { useEffect } from "react";
 
 const ContactUs = () => {
-  return (
-    <h1>ContactUs</h1>
-  )
-}
+    useEffect(() => {
+        const interval = setInterval(() => {
+            console.log("set interval called");
+        }, 1000);
 
-export default ContactUs
+        return () => {
+            clearInterval(interval);
+        };
+    });
+
+    return <h1>ContactUs</h1>;
+};
+
+export default ContactUs;
