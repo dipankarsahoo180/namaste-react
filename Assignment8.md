@@ -63,6 +63,7 @@
    **Answer:**
      - The callback function passed to `useEffect` cannot be `async` because `useEffect` doesn't expect a promise to be returned. It expects either nothing or a cleanup function. Using `async` in the callback can lead to unexpected behavior and errors.
 
+
 ## Reference
 
 - React Life Cycle Method Diagram: [https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
