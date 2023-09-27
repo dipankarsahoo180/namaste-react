@@ -951,6 +951,7 @@ By using `useRouteError` from `react-router-dom`.
 
 1. **What are class based components?**  
 This is an older way of writing code in react. Ex:  
+
     ```javascript
     import React from "react";
 
@@ -958,18 +959,19 @@ This is an older way of writing code in react. Ex:
     
     render() {
         return (
-        <>
-            <h1>Name: Dipankar</h1>
-            <h1>Location: Bangalore</h1>
-            <h1>Contact: +9098909890</h1>
-        </>
-        );
-    }
+            <>
+                <h1>Name: Dipankar</h1>
+                <h1>Location: Bangalore</h1>
+                <h1>Contact: +9098909890</h1>
+            </>
+            );
+        }
     }
     ```
 
 1. **How to access props in class based component?**  
-By using `constructor(props)`. Ex:  
+By using `constructor(props)`. Ex: 
+ 
     ```javascript
     import React from "react";
 
@@ -994,17 +996,19 @@ By using `constructor(props)`. Ex:
         */
         render() {
         const {name,location} = this.props;
-        return (
-            <>
-                <h1>Name: {name}</h1>
-                <h1>Location: {location}</h1>
-                <h1>Contact: +9098909890</h1>
-            </>
-        );
-    }
+            return (
+                <>
+                    <h1>Name: {name}</h1>
+                    <h1>Location: {location}</h1>
+                    <h1>Contact: +9098909890</h1>
+                </>
+            );
+        }
     }
     ```
+
     And pass the props from parent like below:
+
     ```javascript
     import React from "react";
     import UserClass from "./UserClass";
@@ -1193,6 +1197,7 @@ This is a lifecycle hook called after each re-render of the component. It does n
 This is a lifecycle hook called Just before unmounting of the component. First parent component will unmount and then child component
 Example:
 Parent component:
+
     ```javascript
     import React from "react";
     import User from "./User";
@@ -1242,7 +1247,9 @@ Parent component:
 
     export default About;
     ```
+    
     Child Component:
+
     ```javascript
     import React from "react";
 
@@ -1314,13 +1321,12 @@ Parent component:
             );
         }
     }
-
-
     ```
 
 1. **Explain how you can clear interval inside function based react component (inside useEffects).**
 We can make use of the callback method returned by `useEffects()`
 Example:
+
     ```javascript
     import React from "react";
     import { useEffect } from "react";
@@ -1340,6 +1346,208 @@ Example:
     };
 
     export default ContactUs;
+    ```
+
+</details>
+
+## 09 Optimising our App
+<details>
+<summary>Summary</summary>
+
+
+1. **Give an example of how you can create your own custom hook**  
+According to the best practice we can just create a separate file with use as refix to its name and build our logic inside it.
+    Example 1:
+
+    ```javascript
+
+    import { useEffect, useState } from "react";
+    import { SWIGGY_REST_MENU } from "./Constants";
+
+    const useRestrauntMenu =(resId) => {
+
+        const[resInfo,setResInfo] = useState(null);
+
+        useEffect(()=>{
+            fetchData();
+        },[])
+        
+        const fetchData = async ()=>{
+            const response = await fetch(SWIGGY_REST_MENU + resId);
+            const json = await response.json();
+            console.log('custom Hook Json Data',json);
+            setResInfo(json.data);
+        }
+        console.warn('custom Hook Reponse',resInfo)
+        return resInfo;
+    }
+
+    export default useRestrauntMenu;
+    ```
+    Example 2:
+
+    ```javascript
+    import { useEffect, useState } from "react";
+
+    const useOnlineStatus = () => {
+        const [onlineStatus, setOnlineStatus] = useState(true);
+
+        useEffect(() => {
+            window.addEventListener("online", () => {
+                setOnlineStatus(true);
+            });
+            window.addEventListener("offline", () => {
+                setOnlineStatus(false);
+            });
+        }, []);
+
+        return onlineStatus;
+    };
+
+    export default useOnlineStatus;
+
+    ```
+
+    And we can use it inside the component using following.
+
+    ```javascript
+    import { useParams } from "react-router-dom"
+    import Shimmer from "./Shimmer";
+    import RestaurantCard from "./RestaurantCard";
+    import useRestrauntMenu from "../utils/useRestrauntMenu";
+    import useOnlineStatus from "../utils/useOnlineStatus";
+
+    export default function RestaurantMenu() {
+        const { resId } = useParams();
+        const restaurantDetails = useRestrauntMenu(resId); //Custom hook
+        // Notice we are not storing the result into another variable by
+        // using useState or useEffect hook because it is not required and
+        // it will throw error if we do so.
+        console.warn('resInfo',restaurantDetails);
+        const isOnline = useOnlineStatus(); //Custom hook
+        const itemList = 
+        restaurantDetails?.cards? restaurantDetails?.cards[3]?.groupedCard? 
+            restaurantDetails?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards ?
+                restaurantDetails.cards[3]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card.card.itemCards :
+                restaurantDetails.cards[3]?.groupedCard?.cardGroupMap?.REGULAR.cards[2]?.card.card.itemCards 
+            :
+            restaurantDetails?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards ?
+                restaurantDetails.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card.card.itemCards :
+                restaurantDetails.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards[2]?.card.card.itemCards 
+        :null;
+        console.log('card',itemList);
+
+        if (!restaurantDetails || !itemList || !isOnline) return <Shimmer />;
+
+        return (
+            <>
+                <div className="body">
+                    <h1>{restaurantDetails.cards[0]?.card?.card?.info?.name}</h1>
+                    <h2>Rating: {restaurantDetails.cards[0]?.card?.card?.info?.avgRatingString}</h2>
+                    <h3>Total items: {itemList?.length}</h3>
+                    <div className="res-container">
+                        {
+                            itemList.map((el, idx) => {
+                                const resData = {
+                                    info: {
+                                        name: el.card.info.name,
+                                        cloudinaryImageId: el.card.info.imageId,
+                                        cuisines: [el.card.info.itemAttribute.vegClassifier, el.card.info.description],
+                                        avgRating: el.card.info.ratings.aggregatedRating.rating,
+                                        price: el.card.info.price,
+                                        showLogInOutBtn:true
+                                    }
+                                }
+
+                                return (
+                                    <div key={el.card.info.id + '_' + idx + 0}>
+                                        <RestaurantCard key={el.card.info.id + '_' + idx + 1} resData={resData} />
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            </>
+        )
+    }
+    ```
+
+2. **What is Chunking/Code Splitting/Dynamic Bundling/Lazy Loading/Dynamic importing?**  
+It is a way to break down the app into smaller logical chunks. We can acheive it using `lazy` and `Suspense`. 
+Example: Here we are trying to lazy load `Grocery` and `About`.
+
+    ```javascript
+    import React, { lazy, Suspense } from "react";
+    import ReactDOM from "react-dom/client";
+    import Header from "./components/Header";
+    import { Body } from "./components/Body";
+    import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+    import About from "./components/About";
+    import ContactUs from "./components/ContactUs";
+    import Cart from "./components/Cart";
+    import Error from './components/ErrorPage'
+    import RestaurantMenu from "./components/RestaurantCardMenu";
+    // import Grocery from "./components/Grocery";
+
+    const Grocery = lazy(()=>import("./components/Grocery"));
+
+    const AppLayout = () => {
+        return (
+            <div className="app">
+                <Header />
+                <Outlet />
+            </div>
+        )
+    }
+
+
+    const appRouter = createBrowserRouter(
+        [
+            {
+                path: "/",
+                element: <AppLayout />,
+                errorElement: <Error />,
+                children: [
+                    {
+                        path: "",
+                        element: <Body />
+                    },
+                    {
+                        path: "about",
+                        element: (
+                            <Suspense fallback={<Shimmer />}>
+                                <About />
+                            </Suspense>
+                        ),
+                    },
+                    {
+                        path: "contact-us",
+                        element: <ContactUs />
+                    },
+                    {
+                        path: "cart",
+                        element: <Cart />
+                    },
+                    {
+                        path: "grocery",
+                        element: <Suspense fallback={<h1>Nothing here yet</h1>}><Grocery /></Suspense>
+                        //element: <Suspense fallback={<Shimmer/>}><Grocery /></Suspense>
+                    },
+                    {
+                        path: "restaurant/:resId",
+                        element: <RestaurantMenu />
+                    }
+                ]
+            }
+
+        ]
+    );
+
+    //ReactDOM is for dom interaction, Make #root as the root element of react
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    //render the element inside root
+    root.render(<RouterProvider router={appRouter} />);
     ```
 
 </details>
