@@ -18,6 +18,7 @@ const Header = () => {
                         <li><Link className="link-class" to='about'>About us</Link></li>
                         <li><Link className="link-class" to='contact-us'>Contact us</Link></li>
                         <li><Link className="link-class" to='cart'>Cart</Link></li>
+                        <li><Link className="link-class" to='grocery'>Grocery</Link></li>
                         {
                             (jsxButton == 'Login')?
                             <li><button className="log-in-out-btn" onClick={()=>setJsxButton('Logout')}>Login</button></li>
