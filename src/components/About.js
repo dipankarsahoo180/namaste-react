@@ -26,7 +26,7 @@ class About extends React.Component {
         return (
             <>
                 <h1>About</h1>
-                <div className="about-card">
+                <div className="flex flex-wrap justify-evenly">
                         <UserClass
                             name="Dipankar (Class Based)"
                             location="Bangalore(Class)"
