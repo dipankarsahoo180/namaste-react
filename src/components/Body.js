@@ -42,7 +42,7 @@ const Body = () => {
     return listOfRestaurants?.length === 0 ? (
         <Shimmer />
     ) : (
-        <div className="body">
+        <div className="">
             <Search
                 listOfRestaurants={listOfRestaurants}
                 setFilteredRestaurants={setFilteredRestaurants}
@@ -50,10 +50,10 @@ const Body = () => {
                 setSearchText={setSearchText}
             />
 
-            <div className="res-container">
+            <div className="flex flex-wrap justify-around">
                 {filteredRestaurants?.map((el) => (
                     <Link
-                        className="link-class"
+                        className=""
                         to={"restaurant/" + el.info.id}
                         key={el.info.id}
                     >

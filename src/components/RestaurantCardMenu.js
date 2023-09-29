@@ -25,11 +25,11 @@ export default function RestaurantMenu() {
 
     return (
         <>
-            <div className="body">
+            <div className="">
                 <h1>{restaurantDetails.cards[0]?.card?.card?.info?.name}</h1>
                 <h2>Rating: {restaurantDetails.cards[0]?.card?.card?.info?.avgRatingString}</h2>
                 <h3>Total items: {itemList?.length}</h3>
-                <div className="res-container">
+                <div className="flex flex-wrap">
                     {
                         itemList.map((el, idx) => {
                             const resData = {

@@ -1551,3 +1551,40 @@ Example: Here we are trying to lazy load `Grocery` and `About`.
     ```
 
 </details>
+
+## 10 Jo Dikhta hai, vo Bikta Hai
+
+<details>
+<summary>Summary</summary>
+
+1. **Give an example of tailwind css class.**  
+    ```javascript
+    <div className="flex flex-wrap justify-around"> //tailwind classes
+        {filteredRestaurants?.map((el) => (
+            <Link
+                className=""
+                to={"restaurant/" + el.info.id}
+                key={el.info.id}
+            >
+                <RestaurantCard resData={el} />
+            </Link>
+        ))}
+    </div>
+    ```
+1. **Give an example of tailwind css class where you want to use your custom value**  
+Here we have hardcoded the width to 250px
+    ```javascript
+    <img
+        className="w-[250px] h-56 rounded-lg"
+        src={`${SWIGGY_API_CARD_IMAGE}/${cloudinaryImageId}`}
+        alt="Image no available"
+    ></img>
+    ```
+1. **Give an example of tailwind css class where you want to apply some pseudo classes**   
+Example:
+    ```javascript
+    <div className="w-[250px] m-4 h-[420px] rounded-lg bg-slate-300 hover:bg-green-400">
+        <p>Content goes here </p>
+    </div>
+    ```
+</details>

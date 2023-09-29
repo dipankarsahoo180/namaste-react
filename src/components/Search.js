@@ -2,12 +2,12 @@ import React from "react";
 
 const Search = ({ listOfRestaurants, setFilteredRestaurants }) => {
     return (
-        <div className="filter">
-            <div className="search">
+        <div className="filter m-4 p-4  my-1 flex flex-wrap">
+            <div className="border-solid">
                 <input
-                    className="search-text"
-                    placeholder="Search your restaurant"
+                    className="p-2 text-center rounded-lg"
                     type="text"
+                    placeholder="Search your fav restaurant"
                     onChange={(e) => {
                         if (!e.target?.value) {
                             setFilteredRestaurants(listOfRestaurants);
@@ -26,8 +26,9 @@ const Search = ({ listOfRestaurants, setFilteredRestaurants }) => {
                     }}
                 ></input>
             </div>
+
             <button
-                className="top-rated-btn"
+                className="mx-2 rounded-sm  px-2 py-1 my-1 bg-green-500"
                 onClick={() => {
                     const filteredCard = listOfRestaurants.filter(
                         (el) => el.info.avgRating > 4
@@ -35,18 +36,16 @@ const Search = ({ listOfRestaurants, setFilteredRestaurants }) => {
                     setFilteredRestaurants(filteredCard);
                 }}
             >
-                {" "}
-                Filter Top Rated restaurants
+                Top Rated
             </button>
 
             <button
-                className="reset-btn"
+                className="mx-2 rounded-sm px-2 py-1  my-1 bg-green-500"
                 onClick={() => {
                     setFilteredRestaurants(listOfRestaurants);
                 }}
             >
-                {" "}
-                Reset{" "}
+                Reset
             </button>
         </div>
     );
