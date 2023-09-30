@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import logo from "../assets/logo.png"
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
-    const [jsxButton,setJsxButton] = useState('Login')
+    const [jsxButton,setJsxButton] = useState('Login');
+    const data = useContext(UserContext);
     return (
         <>
             <div className="flex flex-wrap justify-between bg-gray-300 mb-2">
@@ -21,10 +23,11 @@ const Header = () => {
                         <li><Link className="p-2 text-lg" to='grocery'>Grocery</Link></li>
                         {
                             (jsxButton == 'Login')?
-                            <li><button className="mx-2 rounded-sm px-2 py-1 bg-green-500" onClick={()=>setJsxButton('Logout')}>Login</button></li>
+                            <li><button className="mx-2 rounded-md px-5 py-1 bg-blue-500 text-white" onClick={()=>setJsxButton('Logout')}>Login</button></li>
                             :
-                            <li><button className="mx-2 rounded-sm px-2 py-1 bg-green-500" onClick={()=>setJsxButton('Login')}>Logout</button></li>
+                            <li><button className="mx-2 rounded-md px-5 py-1 bg-blue-500 text-white" onClick={()=>setJsxButton('Login')}>Logout</button></li>
                         }
+                        <li className="p-2 py-1 text-lg font-bold">{data?.loggedInUser}</li>
                     </ul>
                 </div>
             </div>

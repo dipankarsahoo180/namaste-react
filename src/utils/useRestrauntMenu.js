@@ -13,10 +13,8 @@ const useRestrauntMenu =(resId) => {
     const fetchData = async ()=>{
         const response = await fetch(SWIGGY_REST_MENU + resId);
         const json = await response.json();
-        console.log('custom Hook Json Data',json);
         setResInfo(json.data);
     }
-    console.warn('custom Hook Reponse',resInfo)
     return resInfo;
 }
 

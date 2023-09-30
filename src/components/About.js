@@ -3,6 +3,8 @@ import User from "./User";
 import UserClass from "./UserClass";
 import ChildClassA from "./ChildClassA";
 import ChildClassB from "./ChildClassB";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 class About extends React.Component {
     constructor(props) {
         super(props);
@@ -25,16 +27,26 @@ class About extends React.Component {
         console.log("Parent render start");
         return (
             <>
-                <h1>About</h1>
+                <div>
+                    <UserContext.Consumer>
+                        {(data) => {
+                            {data.setUserName('Dipankar Lizu')}
+                            return (<>
+                                <h1>Hello! , </h1>
+                                <h1 className="font-bold">{data.loggedInUser}</h1>
+                            </>)
+                        }}
+                    </UserContext.Consumer>
+                </div>
                 <div className="flex flex-wrap justify-evenly">
-                        <UserClass
-                            name="Dipankar (Class Based)"
-                            location="Bangalore(Class)"
-                        />
-                        <UserClass
-                            name="Lizu (Class Based)"
-                            location="Bhubaneswar(Class)"
-                        />
+                    <UserClass
+                        name="Dipankar (Class Based)"
+                        location="Bangalore(Class)"
+                    />
+                    <UserClass
+                        name="Lizu (Class Based)"
+                        location="Bhubaneswar(Class)"
+                    />
                 </div>
                 {console.log("inside parend render")}
                 <ChildClassA />

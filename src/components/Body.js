@@ -1,29 +1,34 @@
 import React, { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{withPromtedLabel} from "./RestaurantCard";
 import { SWIGGY_URL } from "../utils/Constants";
 import Shimmer from "./Shimmer";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
     const online = useOnlineStatus();
+    const RestaurantCardPromoted = withPromtedLabel(RestaurantCard); //higher order function
     const fetchData = async () => {
         try {
             const response = await fetch(SWIGGY_URL);
             const data = await response.json();
-            const card = data.data.cards.find(
+            let card = data?.data?.cards?.find(
                 (el) => el.card.card.id === "restaurant_grid_listing"
-            ).card.card;
+            )?.card?.card;
+            card?.gridElements?.infoWithStyle?.restaurants?.forEach((el,idx)=>{
+                if(idx%3==0) el.promoted = true
+                else el.promoted =  false;
+            });
             setListOfRestaurants(
                 card?.gridElements?.infoWithStyle?.restaurants
             );
             setFilteredRestaurants(
                 card?.gridElements?.infoWithStyle?.restaurants
             );
-            console.warn(card?.gridElements?.infoWithStyle?.restaurants);
         } catch (error) {
             console.error("Fetch error:", error);
             //throw error;
@@ -57,7 +62,10 @@ const Body = () => {
                         to={"restaurant/" + el.info.id}
                         key={el.info.id}
                     >
-                        <RestaurantCard resData={el} />
+                        {
+                            el.promoted ? <RestaurantCardPromoted resData={el}/> : <RestaurantCard resData={el} />
+                        }
+                        
                     </Link>
                 ))}
             </div>
