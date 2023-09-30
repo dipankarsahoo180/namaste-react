@@ -2,10 +2,14 @@ import { useState,useContext } from "react";
 import logo from "../assets/logo.png"
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const [jsxButton,setJsxButton] = useState('Login');
     const data = useContext(UserContext);
+
+    //Subscribing to the store using a selector(appStore)
+    const cartItems = useSelector((store)=>store?.cart?.items)
     return (
         <>
             <div className="flex flex-wrap justify-between bg-gray-300 mb-2">
@@ -19,7 +23,7 @@ const Header = () => {
                         <li><Link className="p-2 text-lg" to=''>Home</Link></li>
                         <li><Link className="p-2 text-lg" to='about'>About us</Link></li>
                         <li><Link className="p-2 text-lg" to='contact-us'>Contact us</Link></li>
-                        <li><Link className="p-2 text-lg" to='cart'>Cart</Link></li>
+                        <li><Link className="p-2 text-lg font-bold" to='cart'>Cart({cartItems.length})</Link></li>
                         <li><Link className="p-2 text-lg" to='grocery'>Grocery</Link></li>
                         {
                             (jsxButton == 'Login')?

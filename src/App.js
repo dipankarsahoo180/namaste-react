@@ -9,9 +9,12 @@ import Error from "./components/ErrorPage";
 import RestaurantMenu from "./components/RestaurantCardMenu";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/AppStore";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
+
 
 const AppLayout = () => {
     const [userName, setUserName] = useState();
@@ -26,20 +29,21 @@ const AppLayout = () => {
     }, []);
 
     return (
-        //Providing the value here
-        <UserContext.Provider
-            value={{ loggedInUser: userName, setUserName: setUserName }}
-        >
-            <div className="app">
-                {/* Nested Provider Example */}
-                <UserContext.Provider
-                    value={{ loggedInUser: userName, setUserName: setUserName }}
-                >
-                    <Header />
-                </UserContext.Provider>
-                <Outlet />
-            </div>
-        </UserContext.Provider>
+        <Provider store={appStore}>
+            <UserContext.Provider
+                value={{ loggedInUser: userName, setUserName: setUserName }}
+            >
+                <div className="app">
+                    {/* Nested Provider Example */}
+                    <UserContext.Provider
+                        value={{ loggedInUser: userName, setUserName: setUserName }}
+                    >
+                        <Header />
+                    </UserContext.Provider>
+                    <Outlet />
+                </div>
+            </UserContext.Provider>
+        </Provider>
     );
 };
 
