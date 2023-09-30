@@ -3,7 +3,7 @@ import React from "react";
 const Search = ({ listOfRestaurants, setFilteredRestaurants }) => {
     return (
         <div className="filter m-4 p-4  my-1 flex flex-wrap">
-            <div className="border-solid">
+            <div className="border-solid my-2">
                 <input
                     className="p-2 text-center rounded-lg"
                     type="text"
@@ -28,7 +28,7 @@ const Search = ({ listOfRestaurants, setFilteredRestaurants }) => {
             </div>
 
             <button
-                className="mx-2 rounded-sm  px-2 py-1 my-1 bg-green-500"
+                className="my-2 mx-2 rounded-md px-3 py-1 bg-blue-500 text-white"
                 onClick={() => {
                     const filteredCard = listOfRestaurants.filter(
                         (el) => el.info.avgRating > 4
@@ -40,7 +40,7 @@ const Search = ({ listOfRestaurants, setFilteredRestaurants }) => {
             </button>
 
             <button
-                className="mx-2 rounded-sm px-2 py-1  my-1 bg-green-500"
+                className="my-2 mx-2 rounded-md px-7 py-1 bg-blue-500 text-white"
                 onClick={() => {
                     setFilteredRestaurants(listOfRestaurants);
                 }}

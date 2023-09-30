@@ -1,22 +1,29 @@
 # namaste-react :rocket: 
 
 
+## Project Overview
+
 This is an project based learning where we will build a food ordering app having following components.
 
-  * Header
+<details>
+
+<summary>Mentioned here (Expand)</summary>
+
+* Header
     - Logo
     - Nav items
-  * Body
+* Body
     - Search bar and button
     - Card container (repeatable)
         - Img
         - Restaurant name, Star rating, cuisines, delivery time
-  * Footer
+* Footer
     - Copyright
     - Links
     - Address
     - Contact us
 
+</details>
 
 ## 01 Inception
 
@@ -1588,3 +1595,334 @@ Example:
     </div>
     ```
 </details>
+
+## 11 Data is the new Oil
+
+<details>
+<summary>Summary</summary>
+
+
+1. **What is higher order component in react?**
+It is just a function which takes a component inside  and returns a component. 
+For example: It takes an existing component, modifies/tweaks a bit and returns it.
+    Example of Component `withPromtedLabel`:
+
+    ```javascript
+    import { SWIGGY_API_CARD_IMAGE } from "../utils/Constants";
+
+    const RestaurantCard = (props) => {
+        const {
+            name,
+            cloudinaryImageId,
+            cuisines,
+            avgRating,
+            price,
+            showLogInOutBtn,
+        } = props.resData.info;
+        return (
+            <div className="w-[250px] m-4 h-[420px] rounded-lg bg-slate-300 hover:bg-green-400 relative">
+                <img
+                    className="w-[250px] h-56 rounded-lg"
+                    src={`${SWIGGY_API_CARD_IMAGE}/${cloudinaryImageId}`}
+                    alt="Image no available"
+                ></img>
+                <h3 className="text-center p-2 font-bold text-lg">{name.length >25? name.slice(0,25):name || ""}</h3>
+                <div className="p-2">
+                    <p>
+                        {cuisines.join(", ").length <= 20
+                            ? cuisines.join(", ")
+                            : cuisines.join(", ").slice(0, 20) + "..."}
+                    </p>
+                    <p>Rating: {avgRating || ""}</p>
+                    {price ? <p>Price: {price / 100}</p> : ""}
+                    {showLogInOutBtn == true ? (
+                        <div className="absolute bottom-2 left-[20%]">
+                            <button className="mx-2 rounded-md px-4 py-1 bg-blue-500 text-white">
+                                Add
+                            </button>
+                            <button className="mx-2 rounded-md px-1 py-1 bg-blue-500 text-white">
+                                remove
+                            </button>
+                        </div>
+                    ) : (
+                        <></>
+                    )}
+                </div>
+            </div>
+        );
+    };
+
+
+    // Higher Order Component
+    // input - RestaurantCard =>> RestaurantCardPromoted
+    export const withPromtedLabel = (RestaurantCard) => {
+        return (props) => {
+        return (
+            <div>
+            <label className="absolute bg-black text-white m-2 p-2 rounded-lg z-10">
+                Promoted
+            </label>
+            <RestaurantCard {...props} />
+            </div>
+        );
+        };
+    };
+    export default RestaurantCard;
+
+    ```
+    Example of How to use it and pass props:
+
+    ```javascript
+    import RestaurantCard,{withPromtedLabel} from "./RestaurantCard";
+    const Body = () => {
+        const RestaurantCardPromoted = withPromtedLabel(RestaurantCard)
+        return (
+            <RestaurantCardPromoted resData={el}/>
+        )
+    }
+    ```
+
+    Complete Example of Component:
+
+    ```javascript
+    import React, { useState, useEffect } from "react";
+    import RestaurantCard,{withPromtedLabel} from "./RestaurantCard";
+    import { SWIGGY_URL } from "../utils/Constants";
+    import Shimmer from "./Shimmer";
+    import Search from "./Search";
+    import { Link } from "react-router-dom";
+    import useOnlineStatus from "../utils/useOnlineStatus";
+
+    const Body = () => {
+        const [listOfRestaurants, setListOfRestaurants] = useState([]);
+        const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+        const [searchText, setSearchText] = useState("");
+        const online = useOnlineStatus();
+        const RestaurantCardPromoted = withPromtedLabel(RestaurantCard); //higher order function
+        const fetchData = async () => {
+            try {
+                const response = await fetch(SWIGGY_URL);
+                const data = await response.json();
+                let card = data.data.cards.find(
+                    (el) => el.card.card.id === "restaurant_grid_listing"
+                ).card.card;
+                card?.gridElements?.infoWithStyle?.restaurants?.forEach((el,idx)=>{
+                    if(idx%3==0) el.promoted = true
+                    else el.promoted =  false;
+                });
+                setListOfRestaurants(
+                    card?.gridElements?.infoWithStyle?.restaurants
+                );
+                setFilteredRestaurants(
+                    card?.gridElements?.infoWithStyle?.restaurants
+                );
+                console.warn(card?.gridElements?.infoWithStyle?.restaurants);
+            } catch (error) {
+                console.error("Fetch error:", error);
+                //throw error;
+            }
+        };
+
+        useEffect(() => {
+            fetchData();
+        }, []);
+        if (!online)
+            return (
+                <>
+                    <h1>Looks like you are offline!</h1>
+                </>
+            );
+        return listOfRestaurants?.length === 0 ? (
+            <Shimmer />
+        ) : (
+            <div className="">
+                <Search
+                    listOfRestaurants={listOfRestaurants}
+                    setFilteredRestaurants={setFilteredRestaurants}
+                    searchText={searchText}
+                    setSearchText={setSearchText}
+                />
+
+                <div className="flex flex-wrap justify-around">
+                    {filteredRestaurants?.map((el) => (
+                        <Link
+                            className=""
+                            to={"restaurant/" + el.info.id}
+                            key={el.info.id}
+                        >
+                            {
+                                el.promoted ? <RestaurantCardPromoted resData={el}/> : <RestaurantCard resData={el} />
+                            }
+                            
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        );
+    };
+
+    export { Body };
+
+    ```
+
+1. **What is Controlled and uncontrolled components?**
+If the element is controlled from parent then it is controlled components. But if the element manages all its states on its own it is uncontrolled element.
+
+1. **What is lifting the state?**
+Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as lifting state up, and it’s one of the most common things you will do writing React code
+
+1. **What is Props drilling?**
+Passing the props to more than 1 level deep is props drilling, And it is a problem because although the innermost component needs the data, reset of the inner components might not need that data but we have to pass them in order to pass it to inner most component. We use `Context` to avoid props drilling.
+
+1. **What is `Context` in react and how to use it?**
+Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+    Step 1: Create a Context
+
+    ```javascript
+    import { createContext } from "react";
+
+    const UserContext = createContext({ loggedinUser: "Default User" });
+
+    export default UserContext;
+    ```
+
+    Step 2: Access the Context Information
+
+    ```javascript
+    import React, { useContext } from "react";
+    import UserContext from "../utils/UserContext";
+
+    const ContactUs = () => {
+        const data = useContext(UserContext);
+
+        return (
+            <>
+                <h1>
+                    Hello! {data.loggedInUser} You can email us at
+                    dipankarsahoo180@gmail.com
+                </h1>
+            </>
+        );
+    };
+
+    export default ContactUs;
+    ```
+
+    If you are using class based component, you can access it using `UserContext.Consumer`.
+
+    ```javascript
+    render() {
+        console.log("Parent render start");
+        return (
+            <>
+                <div>
+                    <UserContext.Consumer>
+                        {(data) => {
+                            return (<>
+                                <h1>Hello! , </h1>
+                                <h1>{data.loggedInUser}</h1>
+                            </>)
+                        }}
+                    </UserContext.Consumer>
+                </div>
+                <div className="flex flex-wrap justify-evenly">
+                    <UserClass
+                        name="Dipankar (Class Based)"
+                        location="Bangalore(Class)"
+                    />
+                    <UserClass
+                        name="Lizu (Class Based)"
+                        location="Bhubaneswar(Class)"
+                    />
+                </div>
+            </>
+        );
+    }
+    ```
+
+    Step 3 (optional): To Add/ Update/ set the value of userContext we use `<UserContext.Provider value={whatever_you_want_to_update}>`
+
+    ```javascript
+    const AppLayout = () => {
+        const [userName, setUserName] = useState();
+
+        //authentication
+        useEffect(() => {
+            // Make an API call and send username and password
+            const data = {
+                name: "Dipankar Sahoo",
+            };
+            setUserName(data.name);
+        }, []);
+
+        return (
+            // Wrap the entire component inside UserContext(You can also wrap specific components too)
+            //Providing the additional value,existing value here too
+            //Now this is the provider of values instead of Context for all the elments its wrapping inside it
+            <UserContext.Provider value={{ loggedInUser: userName, setUserName:setUserName }}>
+                <div className="app">
+                    <Header />
+                    <Outlet />
+                </div>
+            </UserContext.Provider>
+        );
+    };
+    ```
+
+    And if we want to update the username in other child components, we can just access the function and call it like below.
+
+    ```javascript
+    import React, { useContext } from "react";
+    import UserContext from "../utils/UserContext";
+
+    const ContactUs = () => {
+        const data = useContext(UserContext);
+        return (
+            <>
+                <h1>
+                Hello! <span className="font-bold">{data.loggedInUser}</span>{" "}
+                You can email us at dipankarsahoo180@gmail.com
+                </h1>
+                <div className="m-2 p-1 flex items-center">
+                    <label>UserName : </label>
+                    <input
+                        className="border border-black"
+                        value={data.loggedInUser}
+                        onChange={(e) => data.setUserName(e.target.value)}
+                    />
+                </div>
+                <button
+                    className="m-2 p-1 bg-blue-600 font-bold text-white rounded-lg"
+                    onClick={() => data.setUserName("Lizu Sahoo")}
+                >
+                    Update User Name
+                </button>
+            </>
+        );
+    };
+
+    export default ContactUs;
+    ```
+
+    We can also use nested Context too.
+
+    ```javascript
+    return (
+        //Providing the value here
+        <UserContext.Provider
+            value={{ loggedInUser: userName, setUserName: setUserName }}
+        >
+            <div className="app">
+                <UserContext.Provider
+                    value={{ loggedInUser: 'Elon Musk', setUserName: setUserName }}
+                >
+                    <Header />
+                </UserContext.Provider>
+                <Outlet />
+            </div>
+        </UserContext.Provider>
+    );
+    ```
+
+</details>
+
