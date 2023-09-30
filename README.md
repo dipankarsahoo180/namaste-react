@@ -1926,3 +1926,219 @@ Context provides a way to pass data through the component tree without having to
 
 </details>
 
+
+## 12 - Let's build our Store
+
+<details>
+<summary>Summary</summary>
+
+
+1. [**What is redux?**](https://redux.js.org/)  
+Redux is a state management tool used to store states across components. It is acheived using the combination of `react-redux` and `redux-toolkit`.  
+    - redux-toolkit ia a newer way of writing redux.
+    - react-redux is used to bridge the gap.
+        ![Alt text](<src/assets/redux diagram.png>)
+        ![Alt text](<src/assets/redux scenario example.png>)
+
+1. **What is a redux store?**  
+Assume Redux store is a big whole object and it is kept at a central global place. Any compoent can access(r/w data) this store. And the store contains multiple `slice`.
+
+1. **Write down the steps to implement redux toolkit.**
+    - Install @reduxjs/toolkit and react-redux
+        
+        ```shell
+        npm i @reduxjs/toolkit
+        npm i react-redux
+        ```
+
+    - Build our store
+        Step 1: Build a store
+        
+        ```javascript
+        import { configureStore } from "@reduxjs/toolkit";
+
+        const AppStore = configureStore
+
+        export default AppStore;
+        ```
+
+    - Connect our store to our app
+        Step 2: To use it in you app.js import `provider`
+
+        ```javascript
+        import { Provider } from "react-redux";
+        ```
+
+        Step 3: To use the store use simillar to Context config inside your root comp (App.js)
+
+        ```javascript
+        import { Provider } from "react-redux";
+        import appStore from "./utils/appStore";
+
+        const AppLayout = () => {
+            return (
+                <Provider store={appStore}>
+                    <div className="app">
+                        <Header />
+                        <Outlet />
+                    </div>
+                </Provider>
+            );
+        };
+        ```
+    - Create a Slice(s) (cartSlice)
+        Step 4: Create a `slice`  cartSlice with name, state and reducers which will contains actions in it.
+        ```javascript
+        import { createSlice } from "@reduxjs/toolkit";
+
+        const cartSlice = createSlice(
+            {
+                name:'cart',
+                initialState:{
+                    items:[]
+                },
+                reducers:{
+                    //mutating the state here
+                    addItem:(state,action)=>{
+                        state.items.push(action.payload)
+                    },
+                    removeItem: (state,action)=>{
+                        state.items.pop(action.payload)
+                    },
+                    clearCart:(state,action)=>{
+                        state.items.length = 0;
+                    }
+                }
+            }
+        )
+
+        export const {addItem,removeItem,clearCart} = cartSlice.actions;
+
+        export default cartSlice.reducer;
+        ```
+        
+        Step 5: Now add the slice into your store into the reducer.
+            
+        ```javascript
+        import { configureStore } from "@reduxjs/toolkit";
+        import cartReducer from "./cartSlice";
+
+        const appStore = configureStore({
+            reducer: {
+                cart: cartReducer,
+                people: peopleSlice
+            }
+        })
+
+        export default appStore;
+        ```
+
+    - Dispatch Reducer(action)
+        Step 7: To update any value you can call the reducer action and dispatch it using `useDispatch` hook.
+
+        ```javascript
+        import { useDispatch } from "react-redux"; //import dispatcher
+        import { addItem } from "../utils/cartSlice"; //import the action from the slice
+
+        const dispatch = useDispatch();
+        const handleAddItem=(item)=>{
+            //dispatch an action with item as payload
+            dispatch(addItem(item))
+        }
+
+        //call it from any button
+        <button
+            className="p-2 mx-16 rounded-lg bg-white text-green-600 font-bold shadow-lg"
+            onClick={()=>handleAddItem(item)}
+        >
+            ADD +
+        </button>
+        ```
+
+    - Selector (Used to read the data)
+        Step 6: Read the data into the cart inside `Header.js`. And for this you can subsscribeusing `useSelector` hook.
+
+        ```javascript
+        import { useSelector } from "react-redux";
+        
+        //Subscribing to the store using a selector(appStore)
+        //cart is the name of one of the reducer in the appStore
+        const cartItems = useSelector((store)=>store?.cart?.items)
+        
+        //And access cartItems in JSX like below
+        <li><Link className="p-2 text-lg font-bold" to='cart'>Cart({cartItems.length})</Link></li>
+        ```
+
+        Combined Example of Selector,dispatcher and actions
+        ```javascript
+        import React from "react";
+        import { SWIGGY_API_CARD_IMAGE } from "../utils/Constants";
+        import { useDispatch } from "react-redux";
+        import { removeItem } from "../utils/cartSlice";
+        import { useSelector } from "react-redux";
+
+        const Cart = () => {
+            //Subscribing to the store using a selector(appStore)
+            //cart is the name of one of the reducer in the appStore
+            const cartItems = useSelector((store) => store?.cart?.items);
+
+            //publishing the value to the store
+            const dispatch = useDispatch();
+            const handleRemoveItem = (item) => {
+                //dispatch an action with item as payload
+                dispatch(removeItem(item));
+            };
+
+            return (
+                <div className="flex flex-wrap justify-between bg-slate-300">
+                    {cartItems.map((item) => (
+                        <div
+                            key={item.card.info.id}
+                            className="p-2 mt-2 border-gray-200 border-b-2 text-left flex items-start w-full"
+                        >
+                            <div className="w-9/12">
+                                <div className="py-2">
+                                    <span>{item.card.info.name}</span>
+                                    <span>
+                                        - ₹
+                                        {item.card.info.price
+                                            ? item.card.info.price / 100
+                                            : item.card.info.defaultPrice / 100}
+                                    </span>
+                                </div>
+                                <p className="text-xs">{item.card.info.description}</p>
+                            </div>
+                            <div className="w-3/12 p-4 items-end relative">
+                                <div className="absolute bottom-1 z-1">
+                                    <button
+                                        className="p-2 mx-16 rounded-lg bg-white text-green-600 font-bold shadow-lg"
+                                        onClick={() => handleRemoveItem(item)}
+                                    >
+                                        REMOVE +
+                                    </button>
+                                </div>
+                                <img
+                                    src={
+                                        SWIGGY_API_CARD_IMAGE +
+                                        "/" +
+                                        item.card.info.imageId
+                                    }
+                                    className="w-full"
+                                />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            );
+        };
+
+        export default Cart;
+
+        ```
+
+</details>
+
+
+
+
+
