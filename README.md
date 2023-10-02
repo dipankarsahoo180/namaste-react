@@ -1937,8 +1937,8 @@ Context provides a way to pass data through the component tree without having to
 Redux is a state management tool used to store states across components. It is acheived using the combination of `react-redux` and `redux-toolkit`.  
     - redux-toolkit ia a newer way of writing redux.
     - react-redux is used to bridge the gap.
-        ![Alt text](<./src/assets/reduxDiagram.png>)
-        ![Alt text](<./src/assets/reduxScenarioExample.png>)
+        ![Alt text](https://github.com/dipankarsahoo180/namaste-react/blob/main/src/assets/reduxDiagram.png)
+        ![Alt text](https://github.com/dipankarsahoo180/namaste-react/blob/main/src/assets/reduxScenarioExample.png)
 
 1. **What is a redux store?**  
 Assume Redux store is a big whole object and it is kept at a central global place. Any compoent can access(r/w data) this store. And the store contains multiple `slice`.
