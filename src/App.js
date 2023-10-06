@@ -10,7 +10,7 @@ import RestaurantMenu from "./components/RestaurantCardMenu";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
-import appStore from "./utils/AppStore";
+import appStore from "./utils/appStore";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
