@@ -2539,23 +2539,23 @@ Example:
     File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
     ---------------------|---------|----------|---------|---------|-------------------
     All files            |   85.05 |    79.16 |   74.28 |   85.71 |                   
-    components          |   96.72 |    79.16 |     100 |   96.61 |                   
-    Body.js            |      92 |     87.5 |     100 |   91.66 | 33,42             
-    ContactUs.js       |     100 |      100 |     100 |     100 |                   
-    Header.js          |     100 |      100 |     100 |     100 |                   
-    RestaurantCard.js  |     100 |    66.66 |     100 |     100 | 20,28-30          
-    Search.js          |     100 |      100 |     100 |     100 | 
-    Shimmer.js         |     100 |      100 |     100 |     100 | 
-    sum.js             |     100 |      100 |     100 |     100 | 
-    components/mocks    |       0 |        0 |       0 |       0 | 
-    logoMock.js        |       0 |        0 |       0 |       0 | 
-    utils               |   57.69 |      100 |   18.18 |      60 | 
-    Constants.js       |     100 |      100 |     100 |     100 | 
-    UserContext.js     |     100 |      100 |     100 |     100 | 
-    appStore.js        |     100 |      100 |     100 |     100 | 
-    cartSlice.js       |      25 |      100 |       0 |   28.57 | 12-20
-    peopleSlice.js     |      40 |      100 |       0 |      40 | 12-18
-    useOnlineStatus.js |      75 |      100 |      50 |      75 | 8,11
+    components           |   96.72 |    79.16 |     100 |   96.61 |                   
+    Body.js              |      92 |     87.5 |     100 |   91.66 | 33,42             
+    ContactUs.js         |     100 |      100 |     100 |     100 |                   
+    Header.js            |     100 |      100 |     100 |     100 |                   
+    RestaurantCard.js    |     100 |    66.66 |     100 |     100 | 20,28-30          
+    Search.js            |     100 |      100 |     100 |     100 | 
+    Shimmer.js           |     100 |      100 |     100 |     100 | 
+    sum.js               |     100 |      100 |     100 |     100 | 
+    components/mocks     |       0 |        0 |       0 |       0 | 
+    logoMock.js          |       0 |        0 |       0 |       0 | 
+    utils                |   57.69 |      100 |   18.18 |      60 | 
+    Constants.js         |     100 |      100 |     100 |     100 | 
+    UserContext.js       |     100 |      100 |     100 |     100 | 
+    appStore.js          |     100 |      100 |     100 |     100 | 
+    cartSlice.js         |      25 |      100 |       0 |   28.57 | 12-20
+    peopleSlice.js       |      40 |      100 |       0 |      40 | 12-18
+    useOnlineStatus.js   |      75 |      100 |      50 |      75 | 8,11
     ---------------------|---------|----------|---------|---------|-------------------
 
     Test Suites: 5 passed, 5 total
