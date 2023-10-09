@@ -2138,7 +2138,431 @@ Assume Redux store is a big whole object and it is kept at a central global plac
 
 </details>
 
+## 13 Time for the Test
 
+<details>
+<summary>Summary</summary>
 
+### Types of testing (devloper)
+- Unit Testing
+- Integration Testing
+- End to End Testing - e2e testing
 
+### Setting up Testing in our app
+1. [Install React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+1. [Installed jest](https://jestjs.io/docs/getting-started)
+1. [Install Babel dependencies](https://jestjs.io/docs/getting-started#using-babel) `npm install --save-dev babel-jest @babel/core @babel/preset-env`
+1. [Configure Babel](https://jestjs.io/docs/getting-started#using-babel) `babel.config.js`
+1. [Configure Parcel](https://parceljs.org/languages/javascript/#usage-with-other-tools) `.parcelrc` Config file to disable default babel transpilation (Parcel uses babel behind the scene. when we use babel.config.js, this will overwrite the existing behaviour/settings/configs)
+1. Create Jest config using `npx jest --init`
+1. [Install jsdom library](https://testing-library.com/docs/react-testing-library/setup) `npm install --save-dev jest-environment-jsdom`
 
+    ```shell
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react> npm i -D @testing-library/react
+
+    added 56 packages, and audited 348 packages in 2m
+
+    138 packages are looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react> npm install --save-dev babel-jest @babel/core @babel/preset-env
+
+    added 194 packages, changed 5 packages, and audited 542 packages in 2m
+
+    143 packages are looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react> npm i -D jest
+
+    added 130 packages, and audited 672 packages in 3m
+
+    158 packages are looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react>
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react> npm run test
+
+    > namaste-react@1.0.0 test
+    > jest
+
+    No tests found, exiting with code 1
+    Run with `--passWithNoTests` to exit with code 0
+    In C:\Users\dipan\Desktop\Javascript\React\namaste-react
+    33 files checked.
+    testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches
+    testPathIgnorePatterns: \\node_modules\\ - 33 matches
+    testRegex:  - 0 matches
+    Pattern:  - 0 matches
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react> npx jest --init
+
+    The following questions will help Jest to create a suitable configuration for your project
+
+    √ Would you like to use Typescript for the configuration file? ... no
+    √ Choose the test environment that will be used for testing » jsdom (browser-like)
+    √ Do you want Jest to add coverage reports? ... yes
+    √ Which provider should be used to instrument code for coverage? » babel
+    √ Automatically clear mock calls, instances, contexts and results before every test? ... yes
+
+    📝  Configuration file created at C:\Users\dipan\Desktop\Javascript\React\namaste-react\jest.config.js
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react> npm install --save-dev jest-environment-jsdom
+
+    added 51 packages, and audited 723 packages in 20s
+
+    159 packages are looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react> 
+    ```
+    But still if you run it will not run tests
+
+    ```shell
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react> npm run test
+
+    > namaste-react@1.0.0 test
+    > jest
+
+    No tests found, exiting with code 1
+    Run with `--passWithNoTests` to exit with code 0
+    In C:\Users\dipan\Desktop\Javascript\React\namaste-react
+    35 files checked.
+    testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches
+    testPathIgnorePatterns: \\node_modules\\ - 35 matches
+    testRegex:  - 0 matches
+    Pattern:  - 0 matches
+    ```
+    Simple example to test the sum of two numbers function
+    
+    ```javascript
+    import { sum } from "../sum";
+
+    test('sum of 2 numbers', () => { 
+        const result = sum(3,4);
+        //Assertion
+        expect(result).toBe(7);
+    })
+    ```
+    Now if you run `npm run test` it will give something like below
+
+    ```shell
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react> npm run test
+
+    > namaste-react@1.0.0 test
+    > jest
+
+    PASS  src/components/__tests__/sum.test.js                                                                                                                       
+    √ sum of 2 numbers (3 ms)
+                                                                                                                                                                    
+    ----------|---------|----------|---------|---------|-------------------                                                                                           
+    File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                                                            
+    ----------|---------|----------|---------|---------|-------------------
+    All files |     100 |      100 |     100 |     100 | 
+    sum.js    |     100 |      100 |     100 |     100 | 
+    ----------|---------|----------|---------|---------|-------------------
+    Test Suites: 1 passed, 1 total
+    Tests:       1 passed, 1 total
+    Snapshots:   0 total
+    Time:        1.34 s, estimated 2 s
+    Ran all test suites.
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react>
+    ```
+1. Install `npm i -D @babel/preset-react` - to make JSX work in test cases
+1. Include `['@babel/preset-react', {runtime: "automatic"}]` inside babel config 
+1. To resolve toBeInTheDocument() is not a function `npm i -D @testing-library/jest-dom`. Now the following piece of code will also work
+    ```jsx
+    import { render,screen } from "@testing-library/react";
+    import ContactUs from "../ContactUs";
+    import "@testing-library/jest-dom" //toBeInTheDocument
+
+    test('should render contact us component', () => { 
+        
+        render(<ContactUs></ContactUs>);
+
+        //find all the headings in contact
+        const heading = screen.getByRole('heading')
+
+        expect(heading).toBeInTheDocument();
+    })
+    ```
+1. To group your test cases use `describe()` function.
+1. You can also write `it` in place of `test`.Both are same.
+1. Coverage folder will be generated automatically stores all the coverage and report of the test cases. We don't need to put it in git.
+1. To get the mock data for fetch api and use async method, we use `global` and `act` together to acheive the functionality
+    ```javascript
+    import { fireEvent, render, screen } from "@testing-library/react";
+    import { Body } from "../Body";
+    import MOCK_DATA from "../mocks/swiggyRestApiMock.json";
+    import { act } from "react-dom/test-utils";
+    import { BrowserRouter } from "react-router-dom";
+    import "@testing-library/jest-dom";
+
+    //To mock the fetch data, since fetch is present in browser but not in js dom
+    global.fetch = jest.fn(() => {
+        return Promise.resolve({
+            json: () => {
+                return Promise.resolve(MOCK_DATA);
+            },
+        });
+    });
+
+    //We should also enclose it inside act using the following syntax
+    test('should Search Restaurant List and filter restaurant based on Top Rated and Reset the Restaurant List', async () => {
+        await act(async () => render(
+            <BrowserRouter>
+                <Body />
+            </BrowserRouter>
+        ))
+
+        const cardsBeforeSearch = screen.getAllByTestId("resCard");
+        expect(cardsBeforeSearch.length).toBe(9);
+
+        const searchInput = screen.getByTestId("searchInput");
+        fireEvent.change(searchInput, { target: { value: "burger" } });
+
+        const cardsAfterSearch1 = screen.getAllByTestId("resCard");
+        expect(cardsAfterSearch1.length).toBe(1);
+
+        fireEvent.change(searchInput, { target: { value: "" } });
+
+        const cardsAfterSearch2 = screen.getAllByTestId("resCard");
+        expect(cardsAfterSearch2.length).toBe(9);
+
+        const topRatedButton = screen.getByText("Top Rated");
+        fireEvent.click(topRatedButton);
+        const cardsAfterSearch3 = screen.getAllByTestId("resCard");
+        expect(cardsAfterSearch3.length).toBe(6);
+
+        const resetButton = screen.getByText("Reset");
+        fireEvent.click(resetButton);
+        const cardsAfterSearch4 = screen.getAllByTestId("resCard");
+        expect(cardsAfterSearch4.length).toBe(9);
+    })
+    ```
+1. **What is `BeforeAll`, `BeforeEach`, `AfterAll` and `AfterEach`**?  
+As their name suggests they run before/after each/all test methods.
+Example:
+    ```javascript
+    import { render, screen, fireEvent } from "@testing-library/react";
+    import ContactUs from "../ContactUs";
+    import "@testing-library/jest-dom"
+    import React from "react";
+    import UserContext from "../../utils/UserContext";
+
+    beforeAll(() => {
+        console.log("Before All");
+    });
+
+    beforeEach(() => {
+        console.log("Before Each");
+    });
+
+    afterAll(() => {
+        console.log("After All");
+    });
+
+    afterEach(() => {
+        console.log("After Each");
+    });
+
+    describe("Test all the functions and inputs", () => {
+        test("renders the component with the user name and email", () => {
+            // Arrange
+            const mockUser = "Dipankar Sahoo";
+            const mockSetUser = jest.fn();
+            render(
+                <UserContext.Provider value={{ loggedInUser: mockUser, setUserName: mockSetUser }}>
+                    <ContactUs />
+                </UserContext.Provider>
+            );
+
+            // Assert
+            expect(screen.getByText(/Hello!/i)).toBeInTheDocument();
+            expect(screen.getByText(mockUser)).toBeInTheDocument();
+            expect(screen.getByText(/dipankarsahoo180@gmail.com/i)).toBeInTheDocument();
+        });
+
+        test("updates the user name when the input value changes", () => {
+            // Arrange
+            const mockUser = "Dipankar Sahoo";
+            const mockSetUser = jest.fn();
+            render(
+                <UserContext.Provider value={{ loggedInUser: mockUser, setUserName: mockSetUser }}>
+                    <ContactUs />
+                </UserContext.Provider>
+            );
+
+            // Act
+            const input = screen.getByDisplayValue(mockUser);
+            fireEvent.change(input, { target: { value: "Lizu Sahoo" } });
+
+            // Assert
+            expect(mockSetUser).toHaveBeenCalledWith("Lizu Sahoo");
+        });
+
+        test("updates the user name when the button is clicked", () => {
+            // Arrange
+            const mockUser = "Dipankar Sahoo";
+            const mockSetUser = jest.fn();
+            render(
+                <UserContext.Provider value={{ loggedInUser: mockUser, setUserName: mockSetUser }}>
+                    <ContactUs />
+                </UserContext.Provider>
+            );
+
+            // Act
+            const button = screen.getByText(/Update User Name/i);
+            fireEvent.click(button);
+
+            // Assert
+            expect(mockSetUser).toHaveBeenCalledWith("Lizu Sahoo");
+        });
+    })
+
+    test('should render contact us component', () => {
+
+        render(<ContactUs />);
+
+        //find all the headings in contact
+        const heading = screen.getByRole('heading')
+
+        expect(heading).toBeInTheDocument();
+    });
+
+    test('should render button contact us component', () => {
+
+        render(<ContactUs />);
+
+        //find all the button in contact
+        const button = screen.getAllByRole('button')
+
+        expect(button.length).toBe(2)
+    })
+
+    it('should render button contact us component', () => {
+
+        render(<ContactUs />);
+
+        //find all the button in contact
+        const button = screen.getByText('Update User Name')
+
+        expect(button).toBeInTheDocument();
+    })
+    ```
+    output:
+    ```shell
+    PS C:\Users\dipan\Desktop\Javascript\React\namaste-react> npm run test
+
+    > namaste-react@1.0.0 test
+    > jest
+
+    PASS  src/components/__tests__/sum.test.js
+    PASS  src/components/__tests__/RestaurantCard.test.js
+    PASS  src/components/__tests__/ContactUs.test.js
+    ● Console
+
+        console.log
+        Before All
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:8:13)
+
+        console.log
+        Before Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:12:13)
+
+        console.log
+        After Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:20:13)
+
+        console.log
+        Before Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:12:13)
+
+        console.log
+        After Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:20:13)
+
+        console.log
+        Before Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:12:13)
+
+        console.log
+        After Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:20:13)
+
+        console.log
+        Before Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:12:13)
+
+        console.log
+        After Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:20:13)
+
+        console.log
+        Before Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:12:13)
+
+        console.log
+        After Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:20:13)
+
+        console.log
+        Before Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:12:13)
+
+        console.log
+        After Each
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:20:13)
+
+        console.log
+        After All
+
+        at Object.log (src/components/__tests__/ContactUs.test.js:16:13)
+
+    PASS  src/components/__tests__/Search.test.js
+    PASS  src/components/__tests__/Header.test.js                                                                         
+    ---------------------|---------|----------|---------|---------|-------------------
+    File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+    ---------------------|---------|----------|---------|---------|-------------------
+    All files            |   85.05 |    79.16 |   74.28 |   85.71 |                   
+    components          |   96.72 |    79.16 |     100 |   96.61 |                   
+    Body.js            |      92 |     87.5 |     100 |   91.66 | 33,42             
+    ContactUs.js       |     100 |      100 |     100 |     100 |                   
+    Header.js          |     100 |      100 |     100 |     100 |                   
+    RestaurantCard.js  |     100 |    66.66 |     100 |     100 | 20,28-30          
+    Search.js          |     100 |      100 |     100 |     100 | 
+    Shimmer.js         |     100 |      100 |     100 |     100 | 
+    sum.js             |     100 |      100 |     100 |     100 | 
+    components/mocks    |       0 |        0 |       0 |       0 | 
+    logoMock.js        |       0 |        0 |       0 |       0 | 
+    utils               |   57.69 |      100 |   18.18 |      60 | 
+    Constants.js       |     100 |      100 |     100 |     100 | 
+    UserContext.js     |     100 |      100 |     100 |     100 | 
+    appStore.js        |     100 |      100 |     100 |     100 | 
+    cartSlice.js       |      25 |      100 |       0 |   28.57 | 12-20
+    peopleSlice.js     |      40 |      100 |       0 |      40 | 12-18
+    useOnlineStatus.js |      75 |      100 |      50 |      75 | 8,11
+    ---------------------|---------|----------|---------|---------|-------------------
+
+    Test Suites: 5 passed, 5 total
+    Tests:       14 passed, 14 total
+    Snapshots:   0 total
+    Time:        3.923 s, estimated 4 s
+    Ran all test suites.
+    ```
+
+</details>

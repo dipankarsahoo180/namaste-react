@@ -7,6 +7,7 @@ const Search = ({ listOfRestaurants, setFilteredRestaurants }) => {
                 <input
                     className="p-2 text-center rounded-lg"
                     type="text"
+                    data-testid="searchInput"
                     placeholder="Search your fav restaurant"
                     onChange={(e) => {
                         if (!e.target?.value) {

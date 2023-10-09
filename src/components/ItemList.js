@@ -15,6 +15,7 @@ const ItemList = ({ items, toggle }) => {
                 <div
                     key={item.card.info.id}
                     className="p-2 mt-2 border-gray-200 border-b-2 text-left flex items-start w-full"
+                    data-testid="foodItems"
                 >
                     <Item item={item} handleAddItem={handleAddItem} />
                 </div>

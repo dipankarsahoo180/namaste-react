@@ -23,6 +23,22 @@ const ContactUs = () => {
             >
                 Update User Name
             </button>
+
+            <form>
+                <input
+                    type="text"
+                    className=" border border-black p-2 m-2"
+                    placeholder="name"
+                />
+                <input
+                    type="text"
+                    className=" border border-black p-2 m-2"
+                    placeholder="message"
+                />
+                <button className=" border border-black p-2 m-2 bg-blue-100 rounded-lg">
+                    Submit
+                </button>
+            </form>
         </>
     );
 };
