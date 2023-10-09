@@ -1,0 +1,87 @@
+{
+    "info": {
+        "id": "673183",
+        "name": "The Rameshwaram Cafe",
+        "cloudinaryImageId": "edec78a57012c218745c734e47fd2c83",
+        "locality": "Dr Rajkumar Road",
+        "areaName": "Malleshwaram",
+        "costForTwo": "₹250 for two",
+        "cuisines": [
+            "South Indian",
+            "Indian",
+            "Snacks",
+            "Desserts"
+        ],
+        "avgRating": 4.5,
+        "veg": true,
+        "feeDetails": {
+            "restaurantId": "673183",
+            "fees": [
+                {
+                    "name": "BASE_DISTANCE",
+                    "fee": 4100
+                },
+                {
+                    "name": "BASE_TIME"
+                },
+                {
+                    "name": "ANCILLARY_SURGE_FEE"
+                }
+            ],
+            "totalFee": 4100
+        },
+        "parentId": "384316",
+        "avgRatingString": "4.5",
+        "totalRatingsString": "1K+",
+        "sla": {
+            "deliveryTime": 34,
+            "lastMileTravel": 4.5,
+            "serviceability": "SERVICEABLE",
+            "slaString": "34 mins",
+            "lastMileTravelString": "4.5 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2023-10-09 01:00:00",
+            "opened": true
+        },
+        "badges": {},
+        "isOpen": true,
+        "aggregatedDiscountInfoV2": {},
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {},
+                "textBased": {},
+                "textExtendedBadges": {}
+            }
+        },
+        "orderabilityCommunication": {
+            "title": {},
+            "subTitle": {},
+            "message": {},
+            "customIcon": {}
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {}
+    },
+    "analytics": {
+        "context": "seo-data-0d1420dd-4663-4eda-80a6-d65b10e59337"
+    },
+    "cta": {
+        "link": "https://www.swiggy.com/restaurants/the-rameshwaram-cafe-dr-rajkumar-road-malleshwaram-bangalore-673183",
+        "text": "RESTAURANT_MENU",
+        "type": "WEBLINK"
+    },
+    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo",
+    "promoted": true
+}

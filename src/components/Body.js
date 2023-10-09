@@ -61,6 +61,7 @@ const Body = () => {
                         className=""
                         to={"restaurant/" + el.info.id}
                         key={el.info.id}
+                        data-testid="resCard"
                     >
                         {
                             el.promoted ? <RestaurantCardPromoted resData={el}/> : <RestaurantCard resData={el} />

@@ -1,0 +1,1112 @@
+{
+    "statusCode": 0,
+    "data": {
+        "statusMessage": "done successfully",
+        "cards": [
+            {
+                "card": {
+                    "card": {
+                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+                        "info": {
+                            "id": "16961",
+                            "name": "Basaveshwaranagar Dose Corner",
+                            "city": "Bangalore",
+                            "slugs": {
+                                "restaurant": "basaveshwara-nagar-dose-camp-basaveshwaranagar-basaveshwaranagar",
+                                "city": "bangalore"
+                            },
+                            "uniqueId": "7d318660-75ab-4050-b777-86e182298bb4",
+                            "cloudinaryImageId": "jwedlixbbttmfpzqlajs",
+                            "locality": "3rd Stage",
+                            "areaName": "Basaveshwara Nagar",
+                            "costForTwo": "10000",
+                            "costForTwoMessage": "₹100 for two",
+                            "cuisines": [
+                                "South Indian"
+                            ],
+                            "avgRating": 4.2,
+                            "veg": true,
+                            "feeDetails": {
+                                "restaurantId": "16961",
+                                "fees": [
+                                    {
+                                        "name": "time"
+                                    },
+                                    {
+                                        "name": "distance",
+                                        "fee": 2000
+                                    },
+                                    {
+                                        "name": "special"
+                                    }
+                                ],
+                                "totalFee": 2000,
+                                "icon": "v1648208530/surgecreatives/info",
+                                "message": "Very Far (1,204.5 kms) | Additional delivery fee will apply"
+                            },
+                            "parentId": "21585",
+                            "avgRatingString": "4.2",
+                            "totalRatingsString": "10K+ ratings",
+                            "sla": {
+                                "restaurantId": "16961",
+                                "lastMileTravel": 1204.6,
+                                "serviceability": "NON_SERVICEABLE",
+                                "rainMode": "RAIN_MODE_NONE",
+                                "longDistance": "LONG_DISTANCE_NOT_LONG_DISTANCE",
+                                "lastMileTravelString": "1204.5 km",
+                                "iconType": "ICON_TYPE_EMPTY"
+                            },
+                            "availability": {
+                                "nextCloseTime": "2023-10-09 22:00:00",
+                                "visibility": true,
+                                "opened": true,
+                                "restaurantClosedMeta": {}
+                            },
+                            "aggregatedDiscountInfo": {
+                                "header": "10% off",
+                                "shortDescriptionList": [
+                                    {
+                                        "meta": "10% off | Use TRYNEW",
+                                        "discountType": "Percentage",
+                                        "operationType": "RESTAURANT"
+                                    },
+                                    {
+                                        "meta": "10% off | Use PARTY",
+                                        "discountType": "Percentage",
+                                        "operationType": "RESTAURANT"
+                                    }
+                                ],
+                                "descriptionList": [
+                                    {
+                                        "meta": "10% off up to ₹40 | Use code TRYNEW",
+                                        "discountType": "Percentage",
+                                        "operationType": "RESTAURANT"
+                                    },
+                                    {
+                                        "meta": "10% off | Use code PARTY",
+                                        "discountType": "Percentage",
+                                        "operationType": "RESTAURANT"
+                                    }
+                                ],
+                                "visible": true
+                            },
+                            "badges": {},
+                            "slugString": "basaveshwara-nagar-dose-camp-basaveshwaranagar-basaveshwaranagar",
+                            "isOpen": true,
+                            "labels": [
+                                {
+                                    "title": "Timings",
+                                    "message": "null"
+                                },
+                                {
+                                    "title": "Address",
+                                    "message": "No.1, BDA Complex, 8th Main, 3rd Stage, Basaveshwaranagar, Bangalore - 560079"
+                                },
+                                {
+                                    "title": "Cuisines",
+                                    "message": "South Indian"
+                                }
+                            ],
+                            "totalRatings": 10000,
+                            "aggregatedDiscountInfoV2": {
+                                "header": "10% off",
+                                "shortDescriptionList": [
+                                    {
+                                        "meta": "10% off | Use TRYNEW",
+                                        "discountType": "Percentage",
+                                        "operationType": "RESTAURANT"
+                                    },
+                                    {
+                                        "meta": "10% off | Use PARTY",
+                                        "discountType": "Percentage",
+                                        "operationType": "RESTAURANT"
+                                    }
+                                ],
+                                "descriptionList": [
+                                    {
+                                        "meta": "10% off up to ₹40 | Use code TRYNEW",
+                                        "discountType": "Percentage",
+                                        "operationType": "RESTAURANT"
+                                    },
+                                    {
+                                        "meta": "10% off | Use code PARTY",
+                                        "discountType": "Percentage",
+                                        "operationType": "RESTAURANT"
+                                    }
+                                ],
+                                "couponDetailsCta": "View coupon details"
+                            },
+                            "type": "F",
+                            "nudgeBanners": [
+                                {
+                                    "minValue": 350,
+                                    "maxValue": 500,
+                                    "priority": 2,
+                                    "couponCode": "PARTY",
+                                    "discountInfo": {
+                                        "discountType": "Percentage",
+                                        "value": 10
+                                    },
+                                    "lockedMessage": "Add items worth ₹<amount> to unlock flat 10% off | Code PARTY",
+                                    "unlockedMessage": "PARTY Coupon Unlocked! Use it to save flat 10% off",
+                                    "logoCtx": {}
+                                }
+                            ],
+                            "headerBanner": {
+                                "url": "swiggy://webview?is_external=false&webview_url=https://www.swiggy.com/restaurant-info/16961"
+                            },
+                            "ratingSlab": "RATING_SLAB_5",
+                            "availabilityServiceabilityMessage": "Does not deliver to your location",
+                            "orderabilityCommunication": {
+                                "title": {
+                                    "text": "Wish you were"
+                                },
+                                "subTitle": {
+                                    "text": "CLOSER!"
+                                },
+                                "message": {
+                                    "text": "This location is outside the outlet's delivery area",
+                                    "textColour": "negative"
+                                },
+                                "customIcon": {
+                                    "bgGradientColorStart": "#F64C41",
+                                    "bgGradientColorEnd": "#E53554"
+                                }
+                            },
+                            "hasBestsellerItems": true,
+                            "cartOrderabilityNudgeBanner": {
+                                "parameters": {},
+                                "presentation": {}
+                            },
+                            "latLong": "12.9911904,77.5406552"
+                        },
+                        "analytics": {}
+                    },
+                    "relevance": {
+                        "type": "RELEVANCE_TYPE_CHECK_ORDERABILITY_ON_ITEM_ADD",
+                        "sectionId": "POP_UP_CROUTON_MENU"
+                    }
+                }
+            },
+            {
+                "card": {
+                    "card": {
+                        "@type": "type.googleapis.com/swiggy.gandalf.widgets.v2.GridWidget",
+                        "layout": {
+                            "rows": 1,
+                            "columns": 5,
+                            "horizontalScrollEnabled": true,
+                            "itemSpacing": 12,
+                            "lineSpacing": 10,
+                            "widgetPadding": {},
+                            "containerStyle": {
+                                "containerPadding": {
+                                    "left": 10,
+                                    "right": 10,
+                                    "bottom": 16
+                                }
+                            },
+                            "scrollBar": {}
+                        },
+                        "id": "offerCollectionWidget_UX4",
+                        "gridElements": {
+                            "infoWithStyle": {
+                                "@type": "type.googleapis.com/swiggy.presentation.food.v2.OfferInfoWithStyle",
+                                "offers": [
+                                    {
+                                        "info": {
+                                            "header": "10% OFF UPTO ₹40",
+                                            "offerTagColor": "#E46D47",
+                                            "offerIds": [
+                                                "0e1282e2-579c-4b57-98db-a7310c8a0dd3"
+                                            ],
+                                            "expiryTime": "1970-01-01T00:00:00Z",
+                                            "couponCode": "USE TRYNEW",
+                                            "description": "ABOVE ₹159",
+                                            "offerType": "offers",
+                                            "restId": "16961",
+                                            "offerLogo": "offers/generic",
+                                            "descriptionTextColor": "#7302060C"
+                                        },
+                                        "cta": {
+                                            "type": "OFFER_HALF_CARD"
+                                        }
+                                    },
+                                    {
+                                        "info": {
+                                            "header": "FLAT 10% OFF",
+                                            "offerTag": "FLAT DEAL",
+                                            "offerTagColor": "#E46D47",
+                                            "offerIds": [
+                                                "9b541682-1084-435b-8dc3-92b969c9012b"
+                                            ],
+                                            "expiryTime": "1970-01-01T00:00:00Z",
+                                            "couponCode": "USE PARTY",
+                                            "description": "ABOVE ₹500",
+                                            "offerType": "offers",
+                                            "restId": "16961",
+                                            "offerLogo": "offers/generic",
+                                            "descriptionTextColor": "#7302060C"
+                                        },
+                                        "cta": {
+                                            "type": "OFFER_HALF_CARD"
+                                        }
+                                    },
+                                    {
+                                        "info": {
+                                            "header": "20% OFF UPTO ₹200",
+                                            "offerTagColor": "#E46D47",
+                                            "logoBottom": "rng/md/ads/production/be912a4c543f00172d9f82c033ee7239",
+                                            "offerIds": [
+                                                "c8fccdf4-5fc8-405a-9deb-81aebd68f68b"
+                                            ],
+                                            "expiryTime": "1970-01-01T00:00:00Z",
+                                            "couponCode": "NO CODE REQUIRED",
+                                            "description": "ABOVE ₹249",
+                                            "offerType": "offers",
+                                            "restId": "16961",
+                                            "offerLogo": "rng/md/ads/production/be912a4c543f00172d9f82c033ee7239",
+                                            "descriptionTextColor": "#7302060C"
+                                        },
+                                        "cta": {
+                                            "type": "OFFER_HALF_CARD"
+                                        }
+                                    },
+                                    {
+                                        "info": {
+                                            "header": "FLAT ₹120 OFF",
+                                            "offerTagColor": "#E46D47",
+                                            "logoBottom": "rng/md/ads/production/32b9f8a87957f8c1ca369622f6a1ca77",
+                                            "offerIds": [
+                                                "488fd638-4c6b-41ba-b961-e09f37234b54"
+                                            ],
+                                            "expiryTime": "1970-01-01T00:00:00Z",
+                                            "couponCode": "USE AXIS120",
+                                            "description": "ABOVE ₹500",
+                                            "offerType": "offers",
+                                            "restId": "16961",
+                                            "offerLogo": "rng/md/ads/production/32b9f8a87957f8c1ca369622f6a1ca77",
+                                            "descriptionTextColor": "#7302060C"
+                                        },
+                                        "cta": {
+                                            "type": "OFFER_HALF_CARD"
+                                        }
+                                    },
+                                    {
+                                        "info": {
+                                            "header": "FLAT ₹200 OFF",
+                                            "offerTagColor": "#E46D47",
+                                            "logoBottom": "rng/md/ads/production/32b9f8a87957f8c1ca369622f6a1ca77",
+                                            "offerIds": [
+                                                "126af375-b8d6-43f8-a6e4-bf71affdad90"
+                                            ],
+                                            "expiryTime": "1970-01-01T00:00:00Z",
+                                            "couponCode": "USE AXIS200",
+                                            "description": "ABOVE ₹500",
+                                            "offerType": "offers",
+                                            "restId": "16961",
+                                            "offerLogo": "rng/md/ads/production/32b9f8a87957f8c1ca369622f6a1ca77",
+                                            "descriptionTextColor": "#7302060C"
+                                        },
+                                        "cta": {
+                                            "type": "OFFER_HALF_CARD"
+                                        }
+                                    }
+                                ],
+                                "habitMilestoneInfo": {
+                                    "callout": {}
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "groupedCard": {
+                    "cardGroupMap": {
+                        "REGULAR": {
+                            "cards": [
+                                {
+                                    "card": {
+                                        "card": {
+                                            "@type": "type.googleapis.com/swiggy.presentation.food.v2.MenuVegFilterAndBadge",
+                                            "isPureVeg": true,
+                                            "badges": {},
+                                            "vegOnlyDetails": {
+                                                "imageId": "AutoVegOnly_qkjowj",
+                                                "title": "Showing only vegetarian options.",
+                                                "description": "Tap on the VEG ONLY button to turn off the setting"
+                                            },
+                                            "topRatedFilter": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "card": {
+                                        "card": {
+                                            "@type": "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
+                                            "title": "Recommended",
+                                            "itemCards": [
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "57728940",
+                                                            "name": "3 Set Dose + 1 Free ( Save Rs.55 )",
+                                                            "category": "Buy 3 Get 1",
+                                                            "description": "Buy 4 set dose at the rate of 3",
+                                                            "imageId": "68875ce0c295fcf0402912740d37a515",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 20000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "showImage": true,
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.1",
+                                                                    "ratingCount": "101 ratings",
+                                                                    "ratingCountV2": "101"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "3044273",
+                                                            "name": "Set Dosa",
+                                                            "category": "Dosas",
+                                                            "description": "Serves 1 | Fluffy and incredibly soft dosa served with chutney and sambhar.",
+                                                            "imageId": "znhdfhyualddzgfpjxzx",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 6500,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG",
+                                                                "portionSize": "Serves 1"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "showImage": true,
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.2",
+                                                                    "ratingCount": "5061 ratings",
+                                                                    "ratingCountV2": "5061"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "3044277",
+                                                            "name": "Benne Masala Dosa",
+                                                            "category": "Dosas",
+                                                            "description": "Serves 1 | A perfect combination of a crispy dosa prepared with a flavor-packed potato masala served with sambar.",
+                                                            "imageId": "wneswzaqspeyyzbnfura",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 7000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG",
+                                                                "portionSize": "Serves 1"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "showImage": true,
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.1",
+                                                                    "ratingCount": "9667 ratings",
+                                                                    "ratingCountV2": "9667"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "3044274",
+                                                            "name": "Open Dosa",
+                                                            "category": "Dosas",
+                                                            "description": "Serves 1 | Deliciously soft dosa, a delicacy from Karnataka, topped with onions and masala; served with sagoo and chutney.",
+                                                            "imageId": "rdo6n1kwxemy0d53cbzx",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 7000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG",
+                                                                "portionSize": "Serves 1"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "showImage": true,
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.1",
+                                                                    "ratingCount": "3920 ratings",
+                                                                    "ratingCountV2": "3920"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "3044275",
+                                                            "name": "Benne Dosa",
+                                                            "category": "Dosas",
+                                                            "imageId": "mkvjngemvbpoxgnp6l4d",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 7000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "showImage": true,
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.2",
+                                                                    "ratingCount": "4392 ratings",
+                                                                    "ratingCountV2": "4392"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "3044276",
+                                                            "name": "Benne Kali Dosa",
+                                                            "category": "Dosas",
+                                                            "imageId": "wevvtp1rsequ7putjirz",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 7000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "showImage": true,
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.2",
+                                                                    "ratingCount": "4715 ratings",
+                                                                    "ratingCountV2": "4715"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                }
+                                            ],
+                                            "type": "CATEGORY_TYPE_RECOMMENDED"
+                                        }
+                                    }
+                                },
+                                {
+                                    "card": {
+                                        "card": {
+                                            "@type": "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
+                                            "title": "Buy 3 Get 1",
+                                            "itemCards": [
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "57728937",
+                                                            "name": "3 Masala Dose + 1 Free ( Save Rs.60 )",
+                                                            "category": "Buy 3 Get 1",
+                                                            "description": "Buy 4 spicy masala dose at the rate of 3",
+                                                            "imageId": "xkclog2zptxae7izcb6q",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 22000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.3",
+                                                                    "ratingCount": "376 ratings",
+                                                                    "ratingCountV2": "376"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "57728939",
+                                                            "name": "3 Open Dose + 1 Free ( Save Rs.60 )",
+                                                            "category": "Buy 3 Get 1",
+                                                            "description": "Buy 4 open dose at the rate of 3",
+                                                            "imageId": "ieoe66qwp3xqieekdrin",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 22000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.3",
+                                                                    "ratingCount": "84 ratings",
+                                                                    "ratingCountV2": "84"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "57728938",
+                                                            "name": "3 Benne Dose + 1 Free ( Save Rs.60 )",
+                                                            "category": "Buy 3 Get 1",
+                                                            "description": "Buy 4 plain benne dose at the rate of 3",
+                                                            "imageId": "iqquamhjdixggwoxcypu",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 22000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.1",
+                                                                    "ratingCount": "198 ratings",
+                                                                    "ratingCountV2": "198"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "57728940",
+                                                            "name": "3 Set Dose + 1 Free ( Save Rs.55 )",
+                                                            "category": "Buy 3 Get 1",
+                                                            "description": "Buy 4 set dose at the rate of 3",
+                                                            "imageId": "68875ce0c295fcf0402912740d37a515",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 20000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.1",
+                                                                    "ratingCount": "101 ratings",
+                                                                    "ratingCountV2": "101"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                {
+                                    "card": {
+                                        "card": {
+                                            "@type": "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
+                                            "title": "Dosas",
+                                            "itemCards": [
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "3044273",
+                                                            "name": "Set Dosa",
+                                                            "category": "Dosas",
+                                                            "description": "Serves 1 | Fluffy and incredibly soft dosa served with chutney and sambhar.",
+                                                            "imageId": "znhdfhyualddzgfpjxzx",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 6500,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG",
+                                                                "portionSize": "Serves 1"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.2",
+                                                                    "ratingCount": "5061 ratings",
+                                                                    "ratingCountV2": "5061"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "3044277",
+                                                            "name": "Benne Masala Dosa",
+                                                            "category": "Dosas",
+                                                            "description": "Serves 1 | A perfect combination of a crispy dosa prepared with a flavor-packed potato masala served with sambar.",
+                                                            "imageId": "wneswzaqspeyyzbnfura",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 7000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG",
+                                                                "portionSize": "Serves 1"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.1",
+                                                                    "ratingCount": "9667 ratings",
+                                                                    "ratingCountV2": "9667"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "3044274",
+                                                            "name": "Open Dosa",
+                                                            "category": "Dosas",
+                                                            "description": "Serves 1 | Deliciously soft dosa, a delicacy from Karnataka, topped with onions and masala; served with sagoo and chutney.",
+                                                            "imageId": "rdo6n1kwxemy0d53cbzx",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 7000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG",
+                                                                "portionSize": "Serves 1"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.1",
+                                                                    "ratingCount": "3920 ratings",
+                                                                    "ratingCountV2": "3920"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "3044275",
+                                                            "name": "Benne Dosa",
+                                                            "category": "Dosas",
+                                                            "imageId": "mkvjngemvbpoxgnp6l4d",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 7000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.2",
+                                                                    "ratingCount": "4392 ratings",
+                                                                    "ratingCountV2": "4392"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "3044276",
+                                                            "name": "Benne Kali Dosa",
+                                                            "category": "Dosas",
+                                                            "imageId": "wevvtp1rsequ7putjirz",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 7000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.2",
+                                                                    "ratingCount": "4715 ratings",
+                                                                    "ratingCountV2": "4715"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                {
+                                    "card": {
+                                        "card": {
+                                            "@type": "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
+                                            "title": "Combos",
+                                            "itemCards": [
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "57728934",
+                                                            "name": "Masala Combo ( Spicy ) - Save Rs.60 (Benne masala dose + special kali dose + open dose + set dose)",
+                                                            "category": "Combos",
+                                                            "description": "Serves 1 | A town favourite combo consisting of Benne masala dose plus a special kali dose plus a open dose and a set dose.",
+                                                            "imageId": "cqjyysdfbcslrjp1akjm",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 22000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG",
+                                                                "portionSize": "Serves 1"
+                                                            },
+                                                            "ribbon": {
+                                                                "text": "Bestseller",
+                                                                "textColor": "#ffffff",
+                                                                "topBackgroundColor": "#d53d4c",
+                                                                "bottomBackgroundColor": "#b02331"
+                                                            },
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "isBestseller": true,
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.2",
+                                                                    "ratingCount": "308 ratings",
+                                                                    "ratingCountV2": "308"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "57728935",
+                                                            "name": "Plain Combo ( With Out Spicy ) - Save Rs.30",
+                                                            "category": "Combos",
+                                                            "description": "Benne dose + set dose + benne kali dose",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 18000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {},
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.0",
+                                                                    "ratingCount": "83 ratings",
+                                                                    "ratingCountV2": "83"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                },
+                                                {
+                                                    "card": {
+                                                        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Dish",
+                                                        "info": {
+                                                            "id": "57728936",
+                                                            "name": "Mix Combo - Save Rs.60",
+                                                            "category": "Combos",
+                                                            "description": "Benne masala dose + open dose + set dose + benne kali",
+                                                            "imageId": "cqjyysdfbcslrjp1akjm",
+                                                            "inStock": 1,
+                                                            "isVeg": 1,
+                                                            "price": 28000,
+                                                            "variants": {},
+                                                            "variantsV2": {},
+                                                            "itemAttribute": {
+                                                                "vegClassifier": "VEG"
+                                                            },
+                                                            "ribbon": {},
+                                                            "type": "ITEM",
+                                                            "itemBadge": {},
+                                                            "badgesV2": {},
+                                                            "ratings": {
+                                                                "aggregatedRating": {
+                                                                    "rating": "4.1",
+                                                                    "ratingCount": "143 ratings",
+                                                                    "ratingCountV2": "143"
+                                                                }
+                                                            }
+                                                        },
+                                                        "analytics": {},
+                                                        "hideRestaurantDetails": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                {
+                                    "card": {
+                                        "card": {
+                                            "@type": "type.googleapis.com/swiggy.presentation.food.v2.RestaurantLicenseInfo",
+                                            "type": "FSSAI",
+                                            "imageId": "fssai_final_edss9i",
+                                            "text": [
+                                                "License No. 21219184000183"
+                                            ]
+                                        }
+                                    }
+                                },
+                                {
+                                    "card": {
+                                        "card": {
+                                            "@type": "type.googleapis.com/swiggy.presentation.food.v2.RestaurantAddress",
+                                            "name": "Basaveshwaranagar Dose Corner",
+                                            "area": "Basaveshwara Nagar",
+                                            "completeAddress": "No.1, BDA Complex, 8th Main, 3rd Stage, Basaveshwaranagar, Bangalore - 560079"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        "firstOffsetRequest": true,
+        "isQCLink": false
+    },
+    "tid": "adf86bd0-0c00-4997-b3b9-c43be744559a",
+    "sid": "9s95f049-74f5-4cb8-8e9d-87000e103a43",
+    "deviceId": "add80517-f7c6-b91d-9c6c-af991fb18d07",
+    "csrfToken": "Bm3vvLUiVxVE-W8L4_cE66djZqdriykM6E7DWfMY"
+}
